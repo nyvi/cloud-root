@@ -1,14 +1,23 @@
-# Compiled class file
-*.class
+/target/
+out/
+!.mvn/wrapper/maven-wrapper.jar
 
-# Log file
-*.log
+### STS ###
+.apt_generated
+.classpath
+.factorypath
+.project
+.settings
+.springBeans
 
-# BlueJ files
-*.ctxt
+### IntelliJ IDEA ###
+.idea
+*.lock
+*.iws
+*.iml
+rebel.xml
+*.ipr
 
-# Mobile Tools for Java (J2ME)
-.mtj.tmp/
 
 # Package Files #
 *.jar
