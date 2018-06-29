@@ -43,6 +43,12 @@
                 <scope>import</scope>
             </dependency>
 
+            <dependency>
+                <groupId>com.github</groupId>
+                <artifactId>cloud-common</artifactId>
+                <version>${cloud.version}</version>
+            </dependency>
+
             <!-- guava -->
             <dependency>
                 <groupId>com.google.guava</groupId>
@@ -106,7 +112,7 @@
     <modules>
         <module>cloud-common</module>
         <module>cloud-eureka</module>
-        <module>com-modules</module>
+        <module>cloud-modules</module>
     </modules>
 
 </project>
