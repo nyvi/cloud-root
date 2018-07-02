@@ -11,7 +11,7 @@ import java.util.Map;
  * @author : czk
  * @date 2018-06-28
  */
-public class CollectionUtils extends org.springframework.util.CollectionUtils {
+public final class CollectionUtils extends org.springframework.util.CollectionUtils {
 
     private CollectionUtils() {
         throw new AssertionError("No CollectionUtils instances for you!");
