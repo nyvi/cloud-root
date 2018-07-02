@@ -40,4 +40,8 @@ public class BaseDO implements Serializable {
      * 是否有效 0-无效 1-有效
      */
     private Integer active;
+    /**
+     * 版本号
+     */
+    private Long versionNo;
 }
