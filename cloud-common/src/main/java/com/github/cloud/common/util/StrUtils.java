@@ -1,6 +1,10 @@
 package com.github.cloud.common.util;
 
 import org.apache.commons.lang3.StringUtils;
+import org.slf4j.helpers.MessageFormatter;
+
+import javax.annotation.Nonnull;
+import javax.annotation.Nullable;
 
 /**
  * 字符串工具类, 继承org.apache.commons.lang3.StringUtils
@@ -32,7 +36,7 @@ public final class StrUtils extends StringUtils {
      * @param param 串驼峰式字符串
      * @return 下划线式字符串(小写)
      */
-    public static String camelToUnderline(String param) {
+    public static String camelToUnderline(@Nullable String param) {
         if (isBlank(param)) {
             return EMPTY;
         }
@@ -46,5 +50,20 @@ public final class StrUtils extends StringUtils {
             sb.append(Character.toLowerCase(c));
         }
         return sb.toString();
+    }
+
+    /**
+     * <p>格式化一个带有占位符的字符串</p>
+     *
+     * <pre>
+     * StrUtils.format("123{}",4) = "1234"
+     * </pre>
+     *
+     * @param message 原始字符串,占位符通过{}标记
+     * @param args    占位符替换值
+     * @return 格式化后的字符串
+     */
+    public static String format(@Nonnull String message, Object... args) {
+        return MessageFormatter.arrayFormat(message, args).getMessage();
     }
 }
