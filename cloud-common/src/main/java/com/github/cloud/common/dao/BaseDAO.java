@@ -3,7 +3,10 @@ package com.github.cloud.common.dao;
 import com.github.cloud.common.domain.entity.BaseDO;
 import com.github.cloud.common.util.Assert;
 import com.github.cloud.common.util.BeanMapUtils;
+import com.github.cloud.common.util.CollectionUtils;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.jdbc.core.BeanPropertyRowMapper;
+import org.springframework.jdbc.core.RowMapper;
 import org.springframework.jdbc.core.namedparam.BeanPropertySqlParameterSource;
 import org.springframework.jdbc.core.namedparam.NamedParameterJdbcTemplate;
 import org.springframework.jdbc.support.GeneratedKeyHolder;
@@ -11,6 +14,9 @@ import org.springframework.jdbc.support.KeyHolder;
 import org.springframework.stereotype.Repository;
 
 import javax.annotation.Nonnull;
+import javax.annotation.Nullable;
+import java.util.Collections;
+import java.util.List;
 import java.util.Map;
 import java.util.Objects;
 
@@ -70,4 +76,21 @@ public class BaseDAO {
         return t.getId();
     }
 
+    /**
+     * 查询实体
+     *
+     * @param clazz     类class
+     * @param tableName 表名称
+     * @param id        id
+     * @param <T>       泛型
+     * @return DO or null
+     */
+    @Nullable
+    public <T extends BaseDO> T getEntity(@Nonnull Class<T> clazz, @Nonnull String tableName, @Nonnull Long id) {
+        String sql = SqlHelper.getEntitySql(clazz, tableName);
+        Map<String, Object> paramMap = Collections.singletonMap("id", id);
+        RowMapper<T> rowMapper = BeanPropertyRowMapper.newInstance(clazz);
+        List<T> list = namedJdbcTemplate.query(sql, paramMap, rowMapper);
+        return CollectionUtils.isEmpty(list) ? null : list.get(0);
+    }
 }

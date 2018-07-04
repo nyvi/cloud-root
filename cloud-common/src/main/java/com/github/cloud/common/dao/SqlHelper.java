@@ -9,10 +9,7 @@ import org.springframework.util.ClassUtils;
 
 import javax.annotation.Nonnull;
 import java.lang.reflect.Field;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Map;
-import java.util.Set;
+import java.util.*;
 import java.util.concurrent.ConcurrentHashMap;
 
 /**
@@ -27,6 +24,8 @@ class SqlHelper {
     private static final Map<String, List<Column>> TABLE_COLUMN_CACHE = new ConcurrentHashMap<>();
 
     private static final String INSERT_SQL = "insert into {} ({}) values ({})";
+
+    private static final String SELECT_SQL = "select {} from {} where id=:id and active = 1";
 
     /**
      * 获取Insert Sql
@@ -50,6 +49,28 @@ class SqlHelper {
         String field = StrUtils.removeStart(fieldBuilder.toString(), ",");
         String placeholder = StrUtils.removeStart(placeholderBuilder.toString(), ",");
         return StrUtils.format(INSERT_SQL, tableName, field, placeholder);
+    }
+
+    /**
+     * 获取根据id查询Sql
+     *
+     * @param clazz     类class
+     * @param tableName 表名称
+     * @return 根据id查询sql
+     */
+    static String getEntitySql(@Nonnull Class<?> clazz, @Nonnull String tableName) {
+        StringBuilder fieldBuilder = new StringBuilder();
+        List<Column> columnList = getColumn(clazz);
+        for (Column column : columnList) {
+            // 忽略逻辑字段
+            if (Objects.equals(column.getColumn(), "active")) {
+                continue;
+            }
+            fieldBuilder.append(",").append(column.getColumn());
+        }
+        Assert.isTrue(StrUtils.isNotEmpty(fieldBuilder.toString()), "column can not be empty");
+        String field = StrUtils.removeStart(fieldBuilder.toString(), ",");
+        return StrUtils.format(SELECT_SQL, field, tableName);
     }
 
     /**

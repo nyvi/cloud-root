@@ -38,4 +38,10 @@ public class UpmsTest {
         System.out.println(id);
 
     }
+
+    @Test
+    public void selectTest() {
+        UserDO biz_user = baseDAO.getEntity(UserDO.class, "biz_user", 1111L);
+        System.out.println(biz_user);
+    }
 }
