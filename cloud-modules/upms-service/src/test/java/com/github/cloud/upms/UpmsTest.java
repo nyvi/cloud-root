@@ -34,7 +34,7 @@ public class UpmsTest {
         userDO.setCreateBy(1L);
         userDO.setModifyBy(1L);
         userDO.setId(11L);
-        Long id = baseDAO.insert(userDO, "biz_user");
+        Long id = baseDAO.insertAutoGenKey(userDO, "biz_user");
         System.out.println(id);
 
     }

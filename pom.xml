@@ -105,7 +105,7 @@
     <modules>
         <module>cloud-common</module>
         <module>cloud-eureka</module>
-        <module>cloud-modules</module>
+        <module>cloud-modules</module><module>cloud-config</module>
     </modules>
 
 </project>
