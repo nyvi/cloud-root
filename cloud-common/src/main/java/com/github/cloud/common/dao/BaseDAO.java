@@ -9,6 +9,8 @@ import org.springframework.jdbc.core.BeanPropertyRowMapper;
 import org.springframework.jdbc.core.RowMapper;
 import org.springframework.jdbc.core.namedparam.BeanPropertySqlParameterSource;
 import org.springframework.jdbc.core.namedparam.NamedParameterJdbcTemplate;
+import org.springframework.jdbc.core.namedparam.SqlParameterSource;
+import org.springframework.jdbc.core.namedparam.SqlParameterSourceUtils;
 import org.springframework.jdbc.support.GeneratedKeyHolder;
 import org.springframework.jdbc.support.KeyHolder;
 import org.springframework.stereotype.Repository;
@@ -74,6 +76,25 @@ public class BaseDAO {
         Assert.isTrue(Objects.nonNull(id), "{} auto id failed", tableName);
         t.setId(id.longValue());
         return t.getId();
+    }
+
+    /**
+     * 批量保存
+     *
+     * @param list      待保存list
+     * @param tableName 表名
+     * @param <T>       泛型
+     * @return 影响行数
+     */
+    public <T extends BaseDO> int batchInsert(@Nonnull List<T> list, @Nonnull String tableName) {
+        if (CollectionUtils.isEmpty(list)) {
+            return 0;
+        }
+        T t = list.get(0);
+        Map<String, Object> paramMap = BeanMapUtils.beanToMap(t);
+        SqlParameterSource[] valueParameter = SqlParameterSourceUtils.createBatch(list);
+        String sql = SqlHelper.getInsertSql(t.getClass(), tableName, paramMap.keySet());
+        return namedJdbcTemplate.batchUpdate(sql, valueParameter).length;
     }
 
     /**
