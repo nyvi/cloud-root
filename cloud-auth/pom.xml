@@ -13,7 +13,7 @@
     <artifactId>cloud-auth</artifactId>
 
     <name>cloud-auth</name>
-    <description>jwt 认证服务</description>
+    <description>SSO服务认证</description>
 
     <dependencies>
 
