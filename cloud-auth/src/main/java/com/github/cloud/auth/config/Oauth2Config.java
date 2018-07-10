@@ -1,5 +1,6 @@
 package com.github.cloud.auth.config;
 
+import com.github.cloud.auth.security.UserDetailsServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -9,6 +10,7 @@ import org.springframework.security.oauth2.config.annotation.configurers.ClientD
 import org.springframework.security.oauth2.config.annotation.web.configuration.AuthorizationServerConfigurerAdapter;
 import org.springframework.security.oauth2.config.annotation.web.configuration.EnableAuthorizationServer;
 import org.springframework.security.oauth2.config.annotation.web.configurers.AuthorizationServerEndpointsConfigurer;
+import org.springframework.security.oauth2.config.annotation.web.configurers.AuthorizationServerSecurityConfigurer;
 import org.springframework.security.oauth2.provider.ClientDetailsService;
 import org.springframework.security.oauth2.provider.client.JdbcClientDetailsService;
 import org.springframework.security.oauth2.provider.token.TokenStore;
@@ -30,10 +32,13 @@ public class Oauth2Config extends AuthorizationServerConfigurerAdapter {
 
     private final AuthenticationManager authenticationManager;
 
+    private final UserDetailsServiceImpl userDetailsService;
+
     @Autowired
-    public Oauth2Config(DataSource dataSource, AuthenticationManager authenticationManager) {
+    public Oauth2Config(DataSource dataSource, AuthenticationManager authenticationManager, UserDetailsServiceImpl userDetailsService) {
         this.dataSource = dataSource;
         this.authenticationManager = authenticationManager;
+        this.userDetailsService = userDetailsService;
     }
 
     /**
@@ -57,6 +62,14 @@ public class Oauth2Config extends AuthorizationServerConfigurerAdapter {
     }
 
     @Override
+    public void configure(AuthorizationServerSecurityConfigurer security) {
+        security
+                .tokenKeyAccess("permitAll()")
+                .checkTokenAccess("isAuthenticated()")
+                .allowFormAuthenticationForClients();
+    }
+
+    @Override
     public void configure(ClientDetailsServiceConfigurer clients) throws Exception {
         JdbcClientDetailsService clientDetailsService = new JdbcClientDetailsService(dataSource);
         clients.withClientDetails(clientDetailsService);
@@ -65,7 +78,9 @@ public class Oauth2Config extends AuthorizationServerConfigurerAdapter {
     @Override
     public void configure(AuthorizationServerEndpointsConfigurer endpoints) {
         //token增强配置
-        endpoints.authenticationManager(authenticationManager);
-        endpoints.tokenStore(tokenStore());
+        endpoints.userDetailsService(userDetailsService)
+                .authenticationManager(authenticationManager)
+                .tokenStore(tokenStore());
     }
+
 }
