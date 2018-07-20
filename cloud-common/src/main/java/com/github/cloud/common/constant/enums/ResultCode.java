@@ -28,6 +28,10 @@ public enum ResultCode {
      */
     NO_AUTHORITY(403),
     /**
+     * 找到接口
+     */
+    NO_FOUND(404),
+    /**
      * 重复提交
      */
     REPEATED_SUBMIT(405),

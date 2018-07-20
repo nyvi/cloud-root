@@ -1,5 +1,6 @@
 package org.springframework.security.oauth2.provider.endpoint;
 
+import com.github.cloud.common.constant.enums.ResultCode;
 import com.github.cloud.common.util.Result;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpMethod;
@@ -91,12 +92,16 @@ public class TokenEndpoint extends AbstractEndpoint {
             tokenRequest.setScope(OAuth2Utils.parseParameterList(parameters.get(OAuth2Utils.SCOPE)));
         }
 
-        OAuth2AccessToken token = getTokenGranter().grant(tokenRequest.getGrantType(), tokenRequest);
-        if (token == null) {
-            throw new UnsupportedGrantTypeException("Unsupported grant type: " + tokenRequest.getGrantType());
-        }
-
         // 以下为自定义代码
+        OAuth2AccessToken token;
+        try {
+            token = getTokenGranter().grant(tokenRequest.getGrantType(), tokenRequest);
+        } catch (Exception e) {
+            return getResponse(Result.failed(ResultCode.ERROR, e.getMessage()));
+        }
+        if (token == null) {
+            return getResponse(Result.failed(ResultCode.ERROR, "认证失败"));
+        }
         return getResponse(Result.success(token));
 
     }

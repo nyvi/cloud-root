@@ -10,6 +10,7 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import java.util.HashSet;
+import java.util.Objects;
 import java.util.Set;
 
 /**
@@ -23,7 +24,13 @@ public class UserDetailsServiceImpl implements UserDetailsService {
 
     @Override
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
+        final String user1 = "admin";
+        final String user2 = "user";
         System.out.println(username);
+        if (!Objects.equals(username, user1) && !Objects.equals(username, user2)) {
+            System.out.println("???");
+            throw new UsernameNotFoundException("can not find " + username);
+        }
         String pwd = new BCryptPasswordEncoder().encode("123");
         Set<GrantedAuthority> grantedAuthorities = new HashSet<>();
         grantedAuthorities.add(new SimpleGrantedAuthority("role_admin"));
