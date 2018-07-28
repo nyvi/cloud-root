@@ -112,6 +112,7 @@
         <module>cloud-common</module>
         <module>cloud-eureka</module>
         <module>cloud-modules</module><module>cloud-config</module><module>cloud-auth</module>
+        <module>cloud-gateway</module>
     </modules>
 
 </project>

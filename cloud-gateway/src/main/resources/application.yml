@@ -1,0 +1,21 @@
+server:
+  port: 80
+spring:
+  application:
+    name: api-gateway
+  cloud:
+    gateway:
+      discovery:
+        locator:
+          enabled: true
+      routes:
+      - id: upms-
+        uri: lb://UPMS-SERVER
+        predicates:
+        - Path=/upms/**
+        filters:
+        - StripPrefix=1
+eureka:
+  client:
+    service-url:
+      defaultZone: http://admin:admin@localhost:8761/eureka
