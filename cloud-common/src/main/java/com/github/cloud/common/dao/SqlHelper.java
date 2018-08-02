@@ -1,6 +1,7 @@
 package com.github.cloud.common.dao;
 
 import com.github.cloud.common.domain.entity.Column;
+import com.github.cloud.common.domain.entity.Table;
 import com.github.cloud.common.util.Assert;
 import com.github.cloud.common.util.CollectionUtils;
 import com.github.cloud.common.util.ReflectionUtils;
@@ -19,9 +20,9 @@ import java.util.concurrent.ConcurrentHashMap;
 class SqlHelper {
 
     /**
-     * 缓存反射类表字段信息
+     * 缓存反射类信息
      */
-    private static final Map<String, List<Column>> TABLE_COLUMN_CACHE = new ConcurrentHashMap<>();
+    private static final Map<String, Table> TABLE_CACHE = new ConcurrentHashMap<>();
 
     private static final String INSERT_SQL = "insert into {} ({}) values ({})";
 
@@ -38,17 +39,15 @@ class SqlHelper {
     static String getInsertSql(@Nonnull Class<?> clazz, @Nonnull String tableName, @Nonnull Set<String> paramSet) {
         StringBuilder fieldBuilder = new StringBuilder();
         StringBuilder placeholderBuilder = new StringBuilder();
-        List<Column> columnList = getColumn(clazz);
-        for (Column column : columnList) {
-            if (paramSet.contains(column.getProperty())) {
-                fieldBuilder.append(",").append(column.getColumn());
-                placeholderBuilder.append(",").append(":").append(column.getProperty());
-            }
-        }
+        Table table = getTable(clazz);
+        table.getColumnList().stream().filter(f -> paramSet.contains(f.getProperty())).forEach(r -> {
+            fieldBuilder.append(",").append(r.getColumn());
+            placeholderBuilder.append(",").append(":").append(r.getProperty());
+        });
         Assert.isTrue(StrUtils.isNotEmpty(fieldBuilder.toString()), "column can not be empty");
         String field = StrUtils.removeStart(fieldBuilder.toString(), ",");
         String placeholder = StrUtils.removeStart(placeholderBuilder.toString(), ",");
-        return StrUtils.format(INSERT_SQL, tableName, field, placeholder);
+        return StrUtils.format(INSERT_SQL, StrUtils.defaultIfBlank(tableName, table.getTableName()), field, placeholder);
     }
 
     /**
@@ -60,8 +59,8 @@ class SqlHelper {
      */
     static String getEntitySql(@Nonnull Class<?> clazz, @Nonnull String tableName) {
         StringBuilder fieldBuilder = new StringBuilder();
-        List<Column> columnList = getColumn(clazz);
-        for (Column column : columnList) {
+        Table table = getTable(clazz);
+        for (Column column : table.getColumnList()) {
             // 忽略逻辑字段
             if (Objects.equals(column.getColumn(), "active")) {
                 continue;
@@ -70,34 +69,36 @@ class SqlHelper {
         }
         Assert.isTrue(StrUtils.isNotEmpty(fieldBuilder.toString()), "column can not be empty");
         String field = StrUtils.removeStart(fieldBuilder.toString(), ",");
-        return StrUtils.format(SELECT_SQL, field, tableName);
+        return StrUtils.format(SELECT_SQL, field, StrUtils.defaultIfBlank(tableName, table.getTableName()));
     }
 
     /**
-     * 获取字段信息
+     * 获取表信息
      *
      * @param clazz 类class
      * @return 字段信息
      */
-    private static List<Column> getColumn(@Nonnull Class<?> clazz) {
+    private static Table getTable(@Nonnull Class<?> clazz) {
         String key = ClassUtils.getUserClass(clazz).getName();
-        if (TABLE_COLUMN_CACHE.containsKey(key)) {
-            return TABLE_COLUMN_CACHE.get(key);
+        if (TABLE_CACHE.containsKey(key)) {
+            return TABLE_CACHE.get(key);
         }
-        return initColumn(clazz);
+        return initTable(clazz);
     }
 
     /**
-     * 初始化缓存信息
+     * 初始化Table缓存信息
      *
      * @param clazz 类class
-     * @return 字段信息
+     * @return 表信息
      */
-    private synchronized static List<Column> initColumn(@Nonnull Class<?> clazz) {
-        String key = ClassUtils.getUserClass(clazz).getName();
+    private synchronized static Table initTable(@Nonnull Class<?> clazz) {
+        Class<?> userClass = ClassUtils.getUserClass(clazz);
         List<Column> tableFieldList = getTableFieldList(clazz);
-        TABLE_COLUMN_CACHE.put(key, tableFieldList);
-        return tableFieldList;
+        String tableName = StrUtils.camelToUnderline(userClass.getSimpleName());
+        Table table = new Table(tableName, tableFieldList);
+        TABLE_CACHE.put(userClass.getName(), table);
+        return table;
     }
 
     /**

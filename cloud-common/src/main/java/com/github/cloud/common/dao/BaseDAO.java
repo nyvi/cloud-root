@@ -4,6 +4,7 @@ import com.github.cloud.common.domain.entity.BaseDO;
 import com.github.cloud.common.util.Assert;
 import com.github.cloud.common.util.BeanMapUtils;
 import com.github.cloud.common.util.CollectionUtils;
+import com.github.cloud.common.util.StrUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.BeanPropertyRowMapper;
 import org.springframework.jdbc.core.RowMapper;
@@ -41,6 +42,18 @@ public class BaseDAO {
     /**
      * 添加方法,id自定义
      *
+     * @param t   实体
+     * @param <T> 泛型
+     * @return id
+     */
+    @Nonnull
+    public <T extends BaseDO> Long insert(@Nonnull T t) {
+        return insert(t, StrUtils.EMPTY);
+    }
+
+    /**
+     * 添加方法,id自定义
+     *
      * @param t         实体
      * @param tableName 表名
      * @param <T>       泛型
@@ -48,12 +61,24 @@ public class BaseDAO {
      */
     @Nonnull
     public <T extends BaseDO> Long insert(@Nonnull T t, @Nonnull String tableName) {
-        Assert.isTrue(Objects.nonNull(t.getId()), "{} id not null", tableName);
+        Assert.isTrue(Objects.nonNull(t.getId()), "id not null");
         Map<String, Object> paramMap = BeanMapUtils.beanToMap(t);
         String sql = SqlHelper.getInsertSql(t.getClass(), tableName, paramMap.keySet());
         int ret = namedJdbcTemplate.update(sql, paramMap);
-        Assert.isTrue(ret > 0, "{} insert error", tableName);
+        Assert.isTrue(ret > 0, "insert error");
         return t.getId();
+    }
+
+    /**
+     * 添加方法,id数据库自增
+     *
+     * @param t   实体
+     * @param <T> 泛型
+     * @return id
+     */
+    @Nonnull
+    public <T extends BaseDO> Long insertAutoGenKey(@Nonnull T t) {
+        return insertAutoGenKey(t, StrUtils.EMPTY);
     }
 
     /**
@@ -71,11 +96,22 @@ public class BaseDAO {
         String sql = SqlHelper.getInsertSql(t.getClass(), tableName, paramMap.keySet());
         KeyHolder key = new GeneratedKeyHolder();
         int ret = namedJdbcTemplate.update(sql, new BeanPropertySqlParameterSource(t), key);
-        Assert.isTrue(ret > 0, "{} insert error", tableName);
+        Assert.isTrue(ret > 0, "insert error");
         Number id = key.getKey();
-        Assert.isTrue(Objects.nonNull(id), "{} auto id failed", tableName);
+        Assert.isTrue(Objects.nonNull(id), "auto id failed");
         t.setId(id.longValue());
         return t.getId();
+    }
+
+    /**
+     * 批量保存
+     *
+     * @param list 待保存list
+     * @param <T>  泛型
+     * @return 影响行数
+     */
+    public <T extends BaseDO> int batchInsert(@Nonnull List<T> list) {
+        return batchInsert(list, StrUtils.EMPTY);
     }
 
     /**
@@ -95,6 +131,19 @@ public class BaseDAO {
         SqlParameterSource[] valueParameter = SqlParameterSourceUtils.createBatch(list);
         String sql = SqlHelper.getInsertSql(t.getClass(), tableName, paramMap.keySet());
         return namedJdbcTemplate.batchUpdate(sql, valueParameter).length;
+    }
+
+    /**
+     * 查询实体
+     *
+     * @param clazz 类class
+     * @param id    id
+     * @param <T>   泛型
+     * @return DO or null
+     */
+    @Nullable
+    public <T extends BaseDO> T getEntity(@Nonnull Class<T> clazz, @Nonnull Long id) {
+        return getEntity(clazz, StrUtils.EMPTY, id);
     }
 
     /**
