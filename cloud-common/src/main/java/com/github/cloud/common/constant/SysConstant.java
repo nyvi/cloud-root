@@ -11,7 +11,7 @@ public interface SysConstant {
     /**
      * token 请求头名称
      */
-    String REQ_HEADER = "Authorization";
+    String HEAD_AUTHORIZATION = "Authorization";
 
     /**
      * token 分割符
