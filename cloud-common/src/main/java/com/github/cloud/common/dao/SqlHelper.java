@@ -12,6 +12,7 @@ import javax.annotation.Nonnull;
 import java.lang.reflect.Field;
 import java.util.*;
 import java.util.concurrent.ConcurrentHashMap;
+import java.util.stream.Collectors;
 
 /**
  * @author : czk
@@ -62,7 +63,7 @@ class SqlHelper {
         Table table = getTable(clazz);
         for (Column column : table.getColumnList()) {
             // 忽略逻辑字段
-            if (Objects.equals(column.getColumn(), "active")) {
+            if ("active".equals(column.getColumn())) {
                 continue;
             }
             fieldBuilder.append(",").append(column.getColumn());
@@ -80,10 +81,7 @@ class SqlHelper {
      */
     private static Table getTable(@Nonnull Class<?> clazz) {
         String key = ClassUtils.getUserClass(clazz).getName();
-        if (TABLE_CACHE.containsKey(key)) {
-            return TABLE_CACHE.get(key);
-        }
-        return initTable(clazz);
+        return TABLE_CACHE.containsKey(key) ? TABLE_CACHE.get(key) : initTable(clazz);
     }
 
     /**
@@ -94,9 +92,8 @@ class SqlHelper {
      */
     private synchronized static Table initTable(@Nonnull Class<?> clazz) {
         Class<?> userClass = ClassUtils.getUserClass(clazz);
-        List<Column> tableFieldList = getTableFieldList(clazz);
         String tableName = StrUtils.camelToUnderline(userClass.getSimpleName());
-        Table table = new Table(tableName, tableFieldList);
+        Table table = new Table(tableName, getTableFieldList(clazz));
         TABLE_CACHE.put(userClass.getName(), table);
         return table;
     }
@@ -112,12 +109,6 @@ class SqlHelper {
         if (CollectionUtils.isEmpty(fieldList)) {
             throw new RuntimeException("表字段为空");
         }
-        List<Column> columnList = new ArrayList<>(fieldList.size());
-        if (CollectionUtils.isNotEmpty(fieldList)) {
-            for (Field field : fieldList) {
-                columnList.add(new Column(field.getName(), StrUtils.camelToUnderline(field.getName())));
-            }
-        }
-        return columnList;
+        return fieldList.stream().map(r -> new Column(r.getName(), StrUtils.camelToUnderline(r.getName()))).collect(Collectors.toList());
     }
 }
