@@ -45,7 +45,7 @@
 
             <dependency>
                 <groupId>com.github</groupId>
-                <artifactId>cloud-common</artifactId>
+                <artifactId>cloud-common-core</artifactId>
                 <version>${cloud.version}</version>
             </dependency>
 

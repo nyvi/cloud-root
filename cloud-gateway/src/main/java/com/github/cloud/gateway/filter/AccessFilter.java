@@ -1,10 +1,10 @@
 package com.github.cloud.gateway.filter;
 
 import com.alibaba.fastjson.JSONObject;
-import com.github.cloud.common.constant.SysConstant;
-import com.github.cloud.common.constant.enums.ResultCode;
-import com.github.cloud.common.util.Result;
-import com.github.cloud.common.util.StrUtils;
+import com.github.cloud.common.core.constant.SysConstant;
+import com.github.cloud.common.core.constant.enums.ResultCode;
+import com.github.cloud.common.core.util.Result;
+import com.github.cloud.common.core.util.StrUtils;
 import org.springframework.cloud.gateway.filter.GatewayFilterChain;
 import org.springframework.cloud.gateway.filter.GlobalFilter;
 import org.springframework.core.io.buffer.DataBuffer;

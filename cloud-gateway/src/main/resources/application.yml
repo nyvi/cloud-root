@@ -15,11 +15,6 @@ spring:
         - Path=/upms/**
         filters:
         - StripPrefix=1
-  datasource:
-    url: jdbc:mysql://127.0.0.1/test
-    username: root
-    password: 123456
-    driver-class-name: com.mysql.jdbc.Driver
 eureka:
   client:
     service-url:
