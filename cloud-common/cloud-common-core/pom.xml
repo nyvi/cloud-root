@@ -10,8 +10,17 @@
     <modelVersion>4.0.0</modelVersion>
 
     <artifactId>cloud-common-core</artifactId>
+    <version>${cloud.version}</version>
+
+    <name>cloud-common-core</name>
+    <description>cloud 公共工具类核心模块</description>
 
     <dependencies>
+
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-context</artifactId>
+        </dependency>
 
         <dependency>
             <groupId>org.springframework</groupId>
@@ -22,6 +31,11 @@
             <groupId>org.slf4j</groupId>
             <artifactId>slf4j-api</artifactId>
         </dependency>
+
+        <dependency>
+			<groupId>com.fasterxml.jackson.datatype</groupId>
+			<artifactId>jackson-datatype-jsr310</artifactId>
+		</dependency>
 
         <!-- apache 编码解码算法 -->
         <dependency>

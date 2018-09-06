@@ -13,7 +13,7 @@ import java.util.Objects;
  * @author : czk
  * @date 2018-07-02
  */
-public class BeanMapUtils {
+public final class BeanMapUtils {
 
     private BeanMapUtils() {
         throw new AssertionError("No BeanMapUtils instances for you!");

@@ -1,0 +1,36 @@
+package com.github.cloud.upms.biz.controller;
+
+import com.github.cloud.common.core.util.Result;
+import com.github.cloud.upms.api.domain.dto.UserDTO;
+import com.github.cloud.upms.biz.service.UserService;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
+
+import javax.annotation.security.PermitAll;
+
+/**
+ * 系统用户控制层
+ *
+ * @author : czk
+ * @date 2018-09-06
+ */
+@RestController
+@RequestMapping("user")
+public class UserController {
+
+    private final UserService userService;
+
+    @Autowired
+    public UserController(UserService userService) {
+        this.userService = userService;
+    }
+
+    @PermitAll
+    @RequestMapping("/{userId}")
+    public Result<UserDTO> queryUser(@PathVariable Long userId){
+        UserDTO userDTO = userService.queryUser(userId);
+        return Result.success(userDTO);
+    }
+}

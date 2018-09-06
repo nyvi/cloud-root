@@ -11,7 +11,7 @@ import org.springframework.security.oauth2.config.annotation.web.configuration.E
  * @date 2018-07-07 09:18
  */
 @EnableAuthorizationServer
-@SpringBootApplication(scanBasePackages = {"com.github.cloud.auth", "com.github.cloud.common"})
+@SpringBootApplication
 public class AuthApplication {
 
     public static void main(String[] args) {

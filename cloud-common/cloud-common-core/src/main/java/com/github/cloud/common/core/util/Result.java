@@ -1,8 +1,11 @@
 package com.github.cloud.common.core.util;
 
 import com.github.cloud.common.core.constant.enums.ResultCode;
+import com.github.cloud.common.core.exception.ServiceException;
 import lombok.AllArgsConstructor;
 import lombok.Data;
+
+import java.io.Serializable;
 
 /**
  * API响应结果
@@ -12,12 +15,23 @@ import lombok.Data;
  */
 @Data
 @AllArgsConstructor
-public class Result<T> {
+public final class Result<T> implements Serializable {
 
+    private static final long serialVersionUID = 1L;
+
+    /**
+     * 状态码
+     */
     private Integer code;
 
+    /**
+     * 提示信息
+     */
     private String msg;
 
+    /**
+     * 返回数据
+     */
     private T data;
 
     public static <T> Result<T> success(T data) {
@@ -30,6 +44,10 @@ public class Result<T> {
 
     public static <T> Result<T> error(String msg) {
         return new Result<>(ResultCode.ERROR.code(), msg, null);
+    }
+
+    public static <T> Result<T> error(ServiceException exception) {
+        return new Result<>(ResultCode.ERROR.code(), exception.getMessage(), null);
     }
 
     public static <T> Result<T> failed(ResultCode code, String msg) {

@@ -32,9 +32,9 @@ public class AccessFilter implements GlobalFilter {
         ServerHttpRequest request = exchange.getRequest();
         String token = this.getToken(request);
         if (StrUtils.isBlank(token)) {
-            return renderErrorResponse(exchange, Result.failed(ResultCode.NO_AUTHORITY, "没有权限"));
+            return renderErrorResponse(exchange, Result.failed(ResultCode.NOT_LOGIN_ERROR, "no login"));
         }
-        // TODO:check permission
+        // TODO:check token
         return chain.filter(exchange);
     }
 

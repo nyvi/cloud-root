@@ -4,9 +4,9 @@ package com.github.cloud.common.core.util;
  * 业务断言, 满足业务条件的方可继续进行后续业务
  *
  * @author : czk
- * @date 2018-07-03 09:42
+ * @date 2018-07-03
  */
-public class Assert {
+public final class Assert {
 
     /**
      * 断言方法

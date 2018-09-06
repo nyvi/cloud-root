@@ -14,8 +14,10 @@
 
     <name>cloud-common</name>
     <description>公共模块聚合</description>
+
     <modules>
         <module>cloud-common-core</module>
+        <module>cloud-common-security</module>
     </modules>
 
 </project>

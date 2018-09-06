@@ -17,4 +17,14 @@ public interface SysConstant {
      * token 分割符
      */
     String TOKEN_SPLIT = "Bearer ";
+
+    /**
+     * UTF-8 编码
+     */
+    String UTF8 = "UTF-8";
+
+    /**
+     * content_type
+     */
+    String CONTENT_TYPE = "application/json; charset=utf-8";
 }
