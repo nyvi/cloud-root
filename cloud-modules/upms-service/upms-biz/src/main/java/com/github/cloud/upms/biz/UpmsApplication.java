@@ -2,14 +2,16 @@ package com.github.cloud.upms.biz;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.cloud.client.SpringCloudApplication;
 import org.springframework.cloud.client.discovery.EnableDiscoveryClient;
+import org.springframework.cloud.openfeign.EnableFeignClients;
 
 /**
  * @author : czk
  * @date 2018-06-29
  */
-@EnableDiscoveryClient
-@SpringBootApplication(scanBasePackages = "com.github.cloud")
+@EnableFeignClients
+@SpringCloudApplication
 public class UpmsApplication {
 
     public static void main(String[] args) {
