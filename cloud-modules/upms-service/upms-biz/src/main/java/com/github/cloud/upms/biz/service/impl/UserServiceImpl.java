@@ -2,6 +2,7 @@ package com.github.cloud.upms.biz.service.impl;
 
 import com.github.cloud.upms.api.domain.dto.UserDTO;
 import com.github.cloud.upms.biz.service.UserService;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
 /**
@@ -18,6 +19,7 @@ public class UserServiceImpl implements UserService {
         userDTO.setAccount("account");
         userDTO.setPhone("13712345678");
         userDTO.setUserName("userName");
+        userDTO.setPwd(new BCryptPasswordEncoder().encode("123"));
         return userDTO;
     }
 }

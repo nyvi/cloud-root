@@ -4,6 +4,7 @@ import com.github.cloud.common.core.constant.enums.ResultCode;
 import com.github.cloud.common.core.exception.ServiceException;
 import lombok.AllArgsConstructor;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 
 import java.io.Serializable;
 
@@ -14,6 +15,7 @@ import java.io.Serializable;
  * @date 2018-07-11
  */
 @Data
+@NoArgsConstructor
 @AllArgsConstructor
 public final class Result<T> implements Serializable {
 

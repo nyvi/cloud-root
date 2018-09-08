@@ -15,6 +15,16 @@ import org.springframework.web.bind.annotation.PathVariable;
 @FeignClient(value = ServiceNameConstant.UPMS_SERVICE, fallback = RemoteUserServiceFallbackImpl.class)
 public interface RemoteUserService {
 
+
+    /**
+     * 根据账户查询用户信息
+     *
+     * @param account 账号
+     * @return 用户信息
+     */
+    @GetMapping("/user/info/{account}")
+    Result<UserDTO> queryUserInfo(@PathVariable("account") String account);
+
     /**
      * 查询用户
      *

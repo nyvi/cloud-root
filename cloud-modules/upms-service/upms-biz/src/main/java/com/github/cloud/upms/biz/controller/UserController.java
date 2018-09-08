@@ -9,8 +9,6 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import javax.annotation.security.PermitAll;
-
 /**
  * 系统用户控制层
  *
@@ -33,6 +31,13 @@ public class UserController {
     public Result<UserDTO> queryUser(@PathVariable Long userId){
         System.out.println("--------------------------");
         UserDTO userDTO = userService.queryUser(userId);
+        return Result.success(userDTO);
+    }
+
+    @RequestMapping("/info/{account}")
+    public Result<UserDTO> queryUserInfo(@PathVariable("account") String account) {
+        System.out.println("--------------------------" + account);
+        UserDTO userDTO = userService.queryUser(1L);
         return Result.success(userDTO);
     }
 }
