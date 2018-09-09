@@ -1,4 +1,4 @@
-package com.github.cloud.upms.api.domain.entity;
+package com.github.cloud.upms.biz.entity;
 
 import lombok.Data;
 

@@ -1,6 +1,6 @@
 package com.github.cloud.upms.biz.service;
 
-import com.github.cloud.upms.api.domain.dto.UserDTO;
+import com.github.cloud.upms.api.dto.UserDTO;
 
 /**
  * @author : czk

@@ -1,7 +1,7 @@
 package com.github.cloud.upms.biz.controller;
 
 import com.github.cloud.common.core.util.Result;
-import com.github.cloud.upms.api.domain.dto.UserDTO;
+import com.github.cloud.upms.api.dto.UserDTO;
 import com.github.cloud.upms.biz.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.access.prepost.PreAuthorize;

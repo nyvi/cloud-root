@@ -2,7 +2,7 @@ package com.github.cloud.upms.api.feign;
 
 import com.github.cloud.common.core.constant.ServiceNameConstant;
 import com.github.cloud.common.core.util.Result;
-import com.github.cloud.upms.api.domain.dto.UserDTO;
+import com.github.cloud.upms.api.dto.UserDTO;
 import com.github.cloud.upms.api.feign.fallback.RemoteUserServiceFallbackImpl;
 import org.springframework.cloud.openfeign.FeignClient;
 import org.springframework.web.bind.annotation.GetMapping;

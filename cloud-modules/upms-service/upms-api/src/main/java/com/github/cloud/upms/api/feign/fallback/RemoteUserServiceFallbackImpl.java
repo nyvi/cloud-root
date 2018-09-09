@@ -1,7 +1,7 @@
 package com.github.cloud.upms.api.feign.fallback;
 
 import com.github.cloud.common.core.util.Result;
-import com.github.cloud.upms.api.domain.dto.UserDTO;
+import com.github.cloud.upms.api.dto.UserDTO;
 import com.github.cloud.upms.api.feign.RemoteUserService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Component;

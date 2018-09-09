@@ -1,6 +1,8 @@
-package com.github.cloud.upms.api.domain.dto;
+package com.github.cloud.upms.api.dto;
 
 import lombok.Data;
+
+import java.io.Serializable;
 
 /**
  * 用户DTO
@@ -9,7 +11,9 @@ import lombok.Data;
  * @date 2018-09-06
  */
 @Data
-public class UserDTO {
+public class UserDTO implements Serializable {
+
+    private static final long serialVersionUID = 7999412889198919239L;
 
     /**
      * 用户id

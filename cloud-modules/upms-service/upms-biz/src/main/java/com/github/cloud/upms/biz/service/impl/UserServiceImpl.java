@@ -1,6 +1,6 @@
 package com.github.cloud.upms.biz.service.impl;
 
-import com.github.cloud.upms.api.domain.dto.UserDTO;
+import com.github.cloud.upms.api.dto.UserDTO;
 import com.github.cloud.upms.biz.service.UserService;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;

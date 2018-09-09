@@ -3,7 +3,7 @@ package com.github.cloud.common.core.domain.entity;
 import lombok.Data;
 
 import java.io.Serializable;
-import java.util.Date;
+import java.time.LocalDateTime;
 
 /**
  * BaseDO 定义数据库公共字段
@@ -27,7 +27,7 @@ public class BaseDO implements Serializable {
     /**
      * 创建时间
      */
-    private Date gmtCreate;
+    private LocalDateTime gmtCreate;
     /**
      * 修改人
      */
@@ -35,7 +35,7 @@ public class BaseDO implements Serializable {
     /**
      * 修改时间
      */
-    private Date gmtModify;
+    private LocalDateTime gmtModify;
     /**
      * 是否有效 0-无效 1-有效
      */

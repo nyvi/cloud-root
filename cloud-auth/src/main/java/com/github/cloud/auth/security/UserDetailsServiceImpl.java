@@ -2,7 +2,7 @@ package com.github.cloud.auth.security;
 
 import com.github.cloud.common.core.constant.enums.ResultCode;
 import com.github.cloud.common.core.util.Result;
-import com.github.cloud.upms.api.domain.dto.UserDTO;
+import com.github.cloud.upms.api.dto.UserDTO;
 import com.github.cloud.upms.api.feign.RemoteUserService;
 import lombok.AllArgsConstructor;
 import org.springframework.security.core.GrantedAuthority;
