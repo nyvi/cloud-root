@@ -15,7 +15,7 @@
     <version>${cloud.version}</version>
 
     <name>upms-biz</name>
-	<description>cloud 通用用户权限管理系统业务处理模块</description>
+    <description>cloud 通用用户权限管理系统业务处理模块</description>
 
     <dependencies>
 
@@ -28,15 +28,15 @@
 
         <!-- web模块 -->
         <dependency>
-			<groupId>org.springframework.boot</groupId>
-			<artifactId>spring-boot-starter-web</artifactId>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-web</artifactId>
         </dependency>
 
         <!--eureka 客户端-->
         <dependency>
-			<groupId>org.springframework.cloud</groupId>
-			<artifactId>spring-cloud-starter-netflix-eureka-client</artifactId>
-		</dependency>
+            <groupId>org.springframework.cloud</groupId>
+            <artifactId>spring-cloud-starter-netflix-eureka-client</artifactId>
+        </dependency>
 
         <!--配置中心客户端-->
         <dependency>
@@ -62,12 +62,11 @@
             <artifactId>mysql-connector-java</artifactId>
         </dependency>
 
-        <!-- jdbc -->
         <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-jdbc</artifactId>
+            <groupId>com.baomidou</groupId>
+            <artifactId>mybatis-plus-boot-starter</artifactId>
         </dependency>
 
     </dependencies>
-    
+
 </project>

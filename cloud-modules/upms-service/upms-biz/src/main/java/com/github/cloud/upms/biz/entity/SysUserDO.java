@@ -1,5 +1,6 @@
 package com.github.cloud.upms.biz.entity;
 
+import com.baomidou.mybatisplus.annotation.TableName;
 import com.github.cloud.common.core.domain.entity.BaseDO;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
@@ -12,6 +13,7 @@ import lombok.EqualsAndHashCode;
  * @date 2018-07-03
  */
 @Data
+@TableName("sys_user")
 @EqualsAndHashCode(callSuper = true)
 public class SysUserDO extends BaseDO {
 
