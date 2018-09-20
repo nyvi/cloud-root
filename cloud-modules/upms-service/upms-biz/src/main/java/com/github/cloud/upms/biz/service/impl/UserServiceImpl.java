@@ -2,8 +2,8 @@ package com.github.cloud.upms.biz.service.impl;
 
 import com.github.cloud.common.core.util.BeanUtils;
 import com.github.cloud.upms.api.dto.UserDTO;
-import com.github.cloud.upms.biz.dao.UserMapper;
 import com.github.cloud.upms.biz.entity.SysUserDO;
+import com.github.cloud.upms.biz.mapper.UserMapper;
 import com.github.cloud.upms.biz.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -25,8 +25,11 @@ public class UserServiceImpl implements UserService {
     @Override
     public UserDTO queryUser(Long userId) {
         SysUserDO sysUserDO = userMapper.selectById(userId);
+        System.out.println(sysUserDO);
         UserDTO userDTO = new UserDTO();
-        BeanUtils.copyProperties(sysUserDO, userDTO);
+        if (sysUserDO != null) {
+            BeanUtils.copyProperties(sysUserDO, userDTO);
+        }
         return userDTO;
     }
 }

@@ -1,5 +1,6 @@
 package com.github.cloud.common.core.domain.entity;
 
+import com.baomidou.mybatisplus.annotation.TableLogic;
 import lombok.Data;
 
 import java.io.Serializable;
@@ -39,6 +40,7 @@ public class BaseDO implements Serializable {
     /**
      * 是否有效 0-无效 1-有效
      */
+    @TableLogic
     private Integer active;
     /**
      * 版本号

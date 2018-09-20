@@ -11,7 +11,7 @@ import org.springframework.cloud.openfeign.EnableFeignClients;
  */
 @EnableFeignClients
 @SpringCloudApplication
-@MapperScan("com.github.cloud.upms.biz.dao")
+@MapperScan("com.github.cloud.upms.biz.mapper")
 public class UpmsApplication {
 
     public static void main(String[] args) {

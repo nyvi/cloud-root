@@ -1,4 +1,4 @@
-package com.github.cloud.upms.biz.dao;
+package com.github.cloud.upms.biz.mapper;
 
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
 import com.github.cloud.upms.biz.entity.SysUserDO;
