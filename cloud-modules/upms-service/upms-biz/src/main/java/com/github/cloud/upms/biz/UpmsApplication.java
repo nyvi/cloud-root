@@ -1,5 +1,6 @@
 package com.github.cloud.upms.biz;
 
+import com.github.cloud.common.swagger.annotation.EnableCloudSwagger2;
 import org.springframework.boot.SpringApplication;
 import org.springframework.cloud.client.SpringCloudApplication;
 import org.springframework.cloud.openfeign.EnableFeignClients;
@@ -9,6 +10,7 @@ import org.springframework.cloud.openfeign.EnableFeignClients;
  * @date 2018-06-29
  */
 @EnableFeignClients
+@EnableCloudSwagger2
 @SpringCloudApplication
 public class UpmsApplication {
 

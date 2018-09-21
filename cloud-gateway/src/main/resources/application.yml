@@ -30,4 +30,5 @@ spring:
         - Path=/auth/**
         filters:
         - StripPrefix=1
+        - SwaggerHeaderFilter
 

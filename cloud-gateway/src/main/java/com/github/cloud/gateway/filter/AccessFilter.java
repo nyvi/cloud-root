@@ -2,7 +2,6 @@ package com.github.cloud.gateway.filter;
 
 import com.alibaba.fastjson.JSONObject;
 import com.github.cloud.common.core.constant.SysConstant;
-import com.github.cloud.common.core.constant.enums.ResultCode;
 import com.github.cloud.common.core.util.Result;
 import com.github.cloud.common.core.util.StrUtils;
 import org.springframework.cloud.gateway.filter.GatewayFilterChain;
@@ -31,9 +30,9 @@ public class AccessFilter implements GlobalFilter {
     public Mono<Void> filter(ServerWebExchange exchange, GatewayFilterChain chain) {
         ServerHttpRequest request = exchange.getRequest();
         String token = this.getToken(request);
-        if (StrUtils.isBlank(token)) {
-            return renderErrorResponse(exchange, Result.failed(ResultCode.NOT_LOGIN_ERROR, "no login"));
-        }
+        /// if (StrUtils.isBlank(token)) {
+            /// return renderErrorResponse(exchange, Result.failed(ResultCode.NOT_LOGIN_ERROR, "no login"));
+        /// }
         // TODO:check token
         return chain.filter(exchange);
     }
