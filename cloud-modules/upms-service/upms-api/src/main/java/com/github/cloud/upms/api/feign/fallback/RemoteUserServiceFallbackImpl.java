@@ -22,10 +22,4 @@ public class RemoteUserServiceFallbackImpl implements RemoteUserService {
         log.error("feign 查询用户信息失败:{}", account);
         return Result.error("查询用户信息失败");
     }
-
-    @Override
-    public Result<UserDTO> queryUser(Long userId) {
-        log.error("feign 查询用户信息失败:{}", userId);
-        return Result.error("查询用户信息失败");
-    }
 }

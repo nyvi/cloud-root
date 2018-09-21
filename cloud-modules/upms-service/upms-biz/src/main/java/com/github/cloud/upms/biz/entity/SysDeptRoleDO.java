@@ -1,7 +1,7 @@
 package com.github.cloud.upms.biz.entity;
 
 
-import com.github.cloud.common.core.domain.entity.BaseDO;
+import com.github.cloud.common.mybatis.entity.BaseDO;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 

@@ -57,6 +57,12 @@
                 <version>${cloud.version}</version>
             </dependency>
 
+            <dependency>
+                <groupId>com.github</groupId>
+                <artifactId>cloud-common-mybatis</artifactId>
+                <version>${cloud.version}</version>
+            </dependency>
+
             <!-- guava -->
             <dependency>
                 <groupId>com.google.guava</groupId>

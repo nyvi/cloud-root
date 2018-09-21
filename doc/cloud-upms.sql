@@ -73,7 +73,7 @@ CREATE TABLE `sys_user`  (
 -- ----------------------------
 -- Records of sys_user
 -- ----------------------------
-INSERT INTO `sys_user` VALUES (1, 'admin', '13732962944', 'admin', '$2a$10$0i6JJ7FKeCMjmbae8zT8ZO0jq.2RV5gjHsUFGRwvti0i55UFEKGeO', 1, '2018-09-19 23:10:35', 1, '2018-09-19 23:10:32', 2, 1);
+INSERT INTO `sys_user` VALUES (1, 'admin', '13732962944', 'admin', '$2a$10$0i6JJ7FKeCMjmbae8zT8ZO0jq.2RV5gjHsUFGRwvti0i55UFEKGeO', 1, '2018-09-19 23:10:35', 1, '2018-09-19 23:10:32', 1, 1);
 
 -- ----------------------------
 -- Table structure for sys_user_role

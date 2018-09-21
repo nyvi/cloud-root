@@ -11,8 +11,8 @@ public interface UserService {
     /**
      * 查询用户
      *
-     * @param userId 用户ID
+     * @param account 登录账号
      * @return 登录成功返回用户信息, 否则返回null
      */
-    UserDTO queryUser(Long userId);
+    UserDTO queryUserByAccount(String account);
 }

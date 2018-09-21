@@ -1,15 +1,37 @@
 server:
   port: 8080
 
-# eureka 配置
-eureka:
-  client:
-    serviceUrl:
-      defaultZone: http://admin:admin@localhost:8761/eureka
-
+# datasource
 spring:
   datasource:
     driver-class-name: com.mysql.jdbc.Driver
     url: jdbc:mysql://127.0.0.1:3306/cloud-upms?useSSL=false&useUnicode=true&characterEncoding=utf-8&zeroDateTimeBehavior=convertToNull&transformedBitIsBoolean=true&autoReconnect=true&failOverReadOnly=false&rewriteBatchedStatements=true
     username: root
     password: 123456
+
+# security oauth2
+security:
+  oauth2:
+    client:
+      client-id: admin
+      client-secret: 123
+      scope: openid
+    resource:
+      token-info-uri: http://127.0.0.1:9000/auth/oauth/check_token
+
+# mybatis plus
+mybatis-plus:
+  mapper-locations: classpath*:/mapper/**/*.xml
+  global-config:
+    refresh: true
+    banner: false
+    db-config:
+      id-type: auto
+      db-type: mysql
+      table-underline: true
+      logic-delete-value: 0
+      logic-not-delete-value: 1
+  configuration:
+    map-underscore-to-camel-case: true
+    cache-enabled: true
+    log-impl: org.apache.ibatis.logging.stdout.StdOutImpl

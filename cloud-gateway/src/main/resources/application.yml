@@ -1,5 +1,13 @@
 server:
   port: 9000
+
+# eureka
+eureka:
+  client:
+    service-url:
+      defaultZone: http://admin:admin@localhost:8761/eureka
+
+# gateway
 spring:
   application:
     name: api-gateway
@@ -9,13 +17,17 @@ spring:
         locator:
           enabled: true
       routes:
-      - id: upms-
+      - id: upms-server
         uri: lb://UPMS-SERVER
         predicates:
         - Path=/upms/**
         filters:
         - StripPrefix=1
-eureka:
-  client:
-    service-url:
-      defaultZone: http://admin:admin@localhost:8761/eureka
+
+      - id: auth-server
+        uri: lb://AUTH-SERVER
+        predicates:
+        - Path=/auth/**
+        filters:
+        - StripPrefix=1
+
