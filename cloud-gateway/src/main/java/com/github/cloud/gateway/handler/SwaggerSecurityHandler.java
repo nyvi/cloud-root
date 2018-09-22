@@ -12,11 +12,12 @@ import reactor.core.publisher.Mono;
 import springfox.documentation.swagger.web.SecurityConfiguration;
 import springfox.documentation.swagger.web.SecurityConfigurationBuilder;
 
+import javax.annotation.Nonnull;
 import java.util.Optional;
 
 /**
  * @author : czk
- * @date 2018-09-21 16:37
+ * @date 2018-09-21
  */
 @Component
 public class SwaggerSecurityHandler implements HandlerFunction<ServerResponse> {
@@ -25,7 +26,8 @@ public class SwaggerSecurityHandler implements HandlerFunction<ServerResponse> {
     private SecurityConfiguration securityConfiguration;
 
     @Override
-    public Mono<ServerResponse> handle(ServerRequest request) {
+    @Nonnull
+    public Mono<ServerResponse> handle(@Nonnull ServerRequest request) {
         return ServerResponse.status(HttpStatus.OK)
                 .contentType(MediaType.APPLICATION_JSON_UTF8)
                 .body(BodyInserters.fromObject(

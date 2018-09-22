@@ -2,6 +2,7 @@ package com.github.cloud.gateway.config;
 
 import lombok.AllArgsConstructor;
 import org.springframework.cloud.gateway.config.GatewayProperties;
+import org.springframework.cloud.gateway.route.RouteDefinition;
 import org.springframework.cloud.gateway.route.RouteLocator;
 import org.springframework.cloud.gateway.support.NameUtils;
 import org.springframework.context.annotation.Primary;
@@ -14,7 +15,7 @@ import java.util.List;
 
 /**
  * @author : czk
- * @date 2018-09-21 16:04
+ * @date 2018-09-21
  */
 @Primary
 @Component
@@ -32,13 +33,14 @@ public class SwaggerProvider implements SwaggerResourcesProvider {
         List<SwaggerResource> resources = new ArrayList<>();
         List<String> routes = new ArrayList<>();
         routeLocator.getRoutes().subscribe(route -> routes.add(route.getId()));
-        gatewayProperties.getRoutes().stream().filter(routeDefinition -> routes.contains(routeDefinition.getId()))
-                .forEach(routeDefinition -> routeDefinition.getPredicates().stream()
-                        .filter(predicateDefinition -> "Path".equalsIgnoreCase(predicateDefinition.getName()))
-                        .filter(predicateDefinition -> !"cloud-auth".equalsIgnoreCase(routeDefinition.getId()))
-                        .forEach(predicateDefinition -> resources.add(swaggerResource(routeDefinition.getId(),
-                                predicateDefinition.getArgs().get(NameUtils.GENERATED_NAME_PREFIX + "0")
-                                        .replace("/**", API_URI)))));
+        for (RouteDefinition routeDefinition : gatewayProperties.getRoutes()) {
+            if (routes.contains(routeDefinition.getId())) {
+                routeDefinition.getPredicates().stream()
+                        .filter(f -> "Path".equalsIgnoreCase(f.getName()))
+                        .filter(f -> !"cloud-auth".equalsIgnoreCase(routeDefinition.getId()))
+                        .forEach(r -> resources.add(swaggerResource(routeDefinition.getId(), r.getArgs().get(NameUtils.GENERATED_NAME_PREFIX + "0").replace("/**", API_URI))));
+            }
+        }
         return resources;
     }
 

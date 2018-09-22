@@ -22,9 +22,9 @@ import springfox.documentation.spi.service.contexts.SecurityContext;
 import springfox.documentation.spring.web.plugins.Docket;
 import springfox.documentation.swagger2.annotations.EnableSwagger2;
 
-import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
+import java.util.stream.Collectors;
 
 /**
  * swagger 配置
@@ -49,20 +49,18 @@ public class SwaggerAutoConfiguration {
 
     @Bean
     public Docket api(SwaggerProperties swaggerProperties) {
+
         // base-path处理
         if (CollectionUtils.isEmpty(swaggerProperties.getBasePath())) {
             swaggerProperties.getBasePath().add(BASE_PATH);
         }
-        // noinspection unchecked
-        List<Predicate<String>> basePath = new ArrayList();
-        swaggerProperties.getBasePath().forEach(path -> basePath.add(PathSelectors.ant(path)));
+        List<Predicate<String>> basePath = swaggerProperties.getBasePath().stream().map(PathSelectors::ant).collect(Collectors.toList());
 
         // exclude-path处理
         if (CollectionUtils.isEmpty(swaggerProperties.getExcludePath())) {
             swaggerProperties.getExcludePath().add(DEFAULT_EXCLUDE_PATH);
         }
-        List<Predicate<String>> excludePath = new ArrayList<>();
-        swaggerProperties.getExcludePath().forEach(path -> excludePath.add(PathSelectors.ant(path)));
+        List<Predicate<String>> excludePath = swaggerProperties.getExcludePath().stream().map(PathSelectors::ant).collect(Collectors.toList());
 
         // noinspection Guava
         return new Docket(DocumentationType.SWAGGER_2)
@@ -90,8 +88,7 @@ public class SwaggerAutoConfiguration {
      * 默认的全局鉴权策略
      */
     private List<SecurityReference> defaultAuth() {
-        ArrayList<AuthorizationScope> authorizationScopeList = new ArrayList<>();
-        swaggerProperties().getAuthorization().getAuthorizationScopeList().forEach(authorizationScope -> authorizationScopeList.add(new AuthorizationScope(authorizationScope.getScope(), authorizationScope.getDescription())));
+        List<AuthorizationScope> authorizationScopeList = swaggerProperties().getAuthorization().getAuthorizationScopeList().stream().map(r -> new AuthorizationScope(r.getScope(), r.getDescription())).collect(Collectors.toList());
         AuthorizationScope[] authorizationScopes = new AuthorizationScope[authorizationScopeList.size()];
         return Collections.singletonList(SecurityReference.builder()
                 .reference(swaggerProperties().getAuthorization().getName())
@@ -101,22 +98,21 @@ public class SwaggerAutoConfiguration {
 
 
     private OAuth securitySchema() {
-        ArrayList<AuthorizationScope> authorizationScopeList = new ArrayList<>();
-        swaggerProperties().getAuthorization().getAuthorizationScopeList().forEach(authorizationScope -> authorizationScopeList.add(new AuthorizationScope(authorizationScope.getScope(), authorizationScope.getDescription())));
-        ArrayList<GrantType> grantTypes = new ArrayList<>();
-        swaggerProperties().getAuthorization().getTokenUrlList().forEach(tokenUrl -> grantTypes.add(new ResourceOwnerPasswordCredentialsGrant(tokenUrl)));
-        return new OAuth(swaggerProperties().getAuthorization().getName(), authorizationScopeList, grantTypes);
+        Authorization authorization = swaggerProperties().getAuthorization();
+        List<AuthorizationScope> scopeList = authorization.getAuthorizationScopeList().stream().map(r -> new AuthorizationScope(r.getScope(), r.getDescription())).collect(Collectors.toList());
+        List<GrantType> grantTypes = authorization.getTokenUrlList().stream().map(ResourceOwnerPasswordCredentialsGrant::new).collect(Collectors.toList());
+        return new OAuth(authorization.getName(), scopeList, grantTypes);
     }
 
-    private ApiInfo apiInfo(SwaggerProperties swaggerProperties) {
+    private ApiInfo apiInfo(SwaggerProperties properties) {
         return new ApiInfoBuilder()
-                .title(swaggerProperties.getTitle())
-                .description(swaggerProperties.getDescription())
-                .license(swaggerProperties.getLicense())
-                .licenseUrl(swaggerProperties.getLicenseUrl())
-                .termsOfServiceUrl(swaggerProperties.getTermsOfServiceUrl())
-                .contact(new Contact(swaggerProperties.getContact().getName(), swaggerProperties.getContact().getUrl(), swaggerProperties.getContact().getEmail()))
-                .version(swaggerProperties.getVersion())
+                .title(properties.getTitle())
+                .description(properties.getDescription())
+                .termsOfServiceUrl(properties.getTermsOfServiceUrl())
+                .contact(new Contact(properties.getContact().getName(), properties.getContact().getUrl(), properties.getContact().getEmail()))
+                .license(properties.getLicense())
+                .licenseUrl(properties.getLicenseUrl())
+                .version(properties.getVersion())
                 .build();
     }
 }

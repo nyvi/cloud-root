@@ -35,3 +35,28 @@ mybatis-plus:
     map-underscore-to-camel-case: true
     cache-enabled: true
     log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
+
+# swagger
+swagger:
+  basePackage: com.github.cloud.upms.biz.controller
+  title: 'Cloud Swagger API'
+  description: ''
+  version: '1.0.0'
+  license: ''
+  licenseUrl: ''
+  terms-of-service-url: ''
+  exclude-path:
+  - /actuator/**
+  - /error
+  contact:
+    name: '笔筒上的熊先生'
+    email: ''
+    url: 'https://github.com/nyvi'
+  authorization:
+    name: 'Cloud OAuth'
+    auth-regex: '^.*$'
+    authorization-scope-list:
+    - scope: 'server'
+      description: 'server all'
+    token-url-list:
+    - http://127.0.0.1:9000/auth/oauth/token

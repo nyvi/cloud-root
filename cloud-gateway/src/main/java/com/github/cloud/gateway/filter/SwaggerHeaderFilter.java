@@ -10,7 +10,7 @@ import org.springframework.web.server.ServerWebExchange;
 
 /**
  * @author : czk
- * @date 2018-09-21 17:03
+ * @date 2018-09-21
  */
 @Component
 public class SwaggerHeaderFilter extends AbstractGatewayFilterFactory {
@@ -20,6 +20,7 @@ public class SwaggerHeaderFilter extends AbstractGatewayFilterFactory {
     @Override
     public GatewayFilter apply(Object config) {
         return (exchange, chain) -> {
+
             ServerHttpRequest request = exchange.getRequest();
             String path = request.getURI().getPath();
             if (!StringUtils.endsWithIgnoreCase(path, SwaggerProvider.API_URI)) {

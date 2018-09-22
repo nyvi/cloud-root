@@ -1,6 +1,5 @@
 package com.github.cloud.gateway.handler;
 
-import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
@@ -13,22 +12,22 @@ import reactor.core.publisher.Mono;
 import springfox.documentation.swagger.web.UiConfiguration;
 import springfox.documentation.swagger.web.UiConfigurationBuilder;
 
+import javax.annotation.Nonnull;
 import java.util.Optional;
 
 /**
  * @author : czk
- * @date 2018-09-21 16:37
+ * @date 2018-09-21
  */
-@Slf4j
 @Component
 public class SwaggerUiHandler implements HandlerFunction<ServerResponse> {
 
     @Autowired(required = false)
     private UiConfiguration uiConfiguration;
 
-
     @Override
-    public Mono<ServerResponse> handle(ServerRequest request) {
+    @Nonnull
+    public Mono<ServerResponse> handle(@Nonnull ServerRequest request) {
         return ServerResponse.status(HttpStatus.OK)
                 .contentType(MediaType.APPLICATION_JSON_UTF8)
                 .body(BodyInserters.fromObject(
