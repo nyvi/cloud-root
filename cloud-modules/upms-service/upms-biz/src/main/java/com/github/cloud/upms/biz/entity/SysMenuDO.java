@@ -37,6 +37,11 @@ public class SysMenuDO extends BaseDO {
     private Integer type;
 
     /**
+     * 权限码
+     */
+    private String permissions;
+
+    /**
      * 上级ID
      */
     private Long parentId;

@@ -3,11 +3,15 @@ package com.github.cloud.upms.biz.service.impl;
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.github.cloud.common.core.util.BeanUtils;
 import com.github.cloud.upms.api.dto.UserDTO;
+import com.github.cloud.upms.biz.entity.SysRoleDO;
 import com.github.cloud.upms.biz.entity.SysUserDO;
 import com.github.cloud.upms.biz.mapper.UserMapper;
 import com.github.cloud.upms.biz.service.UserService;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
+
+import java.util.List;
+import java.util.stream.Collectors;
 
 /**
  * @author : czk
@@ -29,6 +33,13 @@ public class UserServiceImpl implements UserService {
 
         UserDTO userDTO = new UserDTO();
         BeanUtils.copyProperties(sysUserDO, userDTO);
+
+        List<SysRoleDO> sysRoleList = userMapper.listUserRole(sysUserDO.getId());
+        List<String> roleList = sysRoleList.stream().map(SysRoleDO::getRoleCode).collect(Collectors.toList());
+        userDTO.setRoleList(roleList);
+
+        List<String> permissionsList = userMapper.listUserPermissions(sysUserDO.getId());
+        userDTO.setPermissionsList(permissionsList);
 
         return userDTO;
     }

@@ -1,12 +1,14 @@
 package com.github.cloud.auth.security;
 
+import com.github.cloud.auth.constant.SecurityConstants;
 import com.github.cloud.common.core.constant.enums.ResultCode;
+import com.github.cloud.common.core.util.CollectionUtils;
 import com.github.cloud.common.core.util.Result;
 import com.github.cloud.upms.api.dto.UserDTO;
 import com.github.cloud.upms.api.feign.RemoteUserService;
 import lombok.AllArgsConstructor;
 import org.springframework.security.core.GrantedAuthority;
-import org.springframework.security.core.authority.SimpleGrantedAuthority;
+import org.springframework.security.core.authority.AuthorityUtils;
 import org.springframework.security.core.userdetails.User;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
@@ -14,6 +16,7 @@ import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
 
 import java.util.HashSet;
+import java.util.List;
 import java.util.Objects;
 import java.util.Set;
 
@@ -38,10 +41,18 @@ public class UserDetailsServiceImpl implements UserDetailsService {
         }
 
         UserDTO userInfo = result.getData();
+        Set<String> authSet = new HashSet<>();
+        List<String> roleList = userInfo.getRoleList();
+        if (CollectionUtils.isNotEmpty(roleList)) {
 
-        Set<GrantedAuthority> grantedAuthorities = new HashSet<>();
-        grantedAuthorities.add(new SimpleGrantedAuthority("role_admin"));
-        return new User(userInfo.getAccount(), "{bcrypt}" + userInfo.getPwd(), grantedAuthorities);
+            roleList.forEach(r -> authSet.add(SecurityConstants.ROLE + r));
+
+            authSet.addAll(userInfo.getPermissionsList());
+        }
+
+        List<GrantedAuthority> authorityList = AuthorityUtils.createAuthorityList(authSet.toArray(new String[0]));
+
+        return new User(userInfo.getAccount(), SecurityConstants.BCRYPT + userInfo.getPwd(), authorityList);
     }
 
 

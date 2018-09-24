@@ -3,6 +3,7 @@ package com.github.cloud.upms.api.dto;
 import lombok.Data;
 
 import java.io.Serializable;
+import java.util.List;
 
 /**
  * 用户DTO
@@ -38,4 +39,14 @@ public class UserDTO implements Serializable {
      * 密码
      */
     private String pwd;
+
+    /**
+     * 角色集合
+     */
+    private List<String> roleList;
+
+    /**
+     * 权限码集合
+     */
+    private List<String> permissionsList;
 }
