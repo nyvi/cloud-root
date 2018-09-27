@@ -2,6 +2,7 @@ package com.github.cloud.upms.biz.service.impl;
 
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.github.cloud.common.core.util.BeanUtils;
+import com.github.cloud.common.mybatis.service.impl.BaseServiceImpl;
 import com.github.cloud.upms.api.dto.UserDTO;
 import com.github.cloud.upms.biz.entity.SysRoleDO;
 import com.github.cloud.upms.biz.entity.SysUserDO;
@@ -19,7 +20,7 @@ import java.util.stream.Collectors;
  */
 @Service
 @AllArgsConstructor
-public class UserServiceImpl implements UserService {
+public class UserServiceImpl extends BaseServiceImpl<UserMapper, SysUserDO> implements UserService {
 
     private final UserMapper userMapper;
 

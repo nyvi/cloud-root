@@ -50,7 +50,7 @@ public class SwaggerAutoConfiguration {
     @Bean
     public Docket api(SwaggerProperties swaggerProperties) {
 
-        // base-path处理
+        // request-path处理
         if (CollectionUtils.isEmpty(swaggerProperties.getBasePath())) {
             swaggerProperties.getBasePath().add(BASE_PATH);
         }

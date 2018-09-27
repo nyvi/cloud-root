@@ -2,8 +2,8 @@ package com.github.cloud.common.mybatis.entity;
 
 import com.baomidou.mybatisplus.annotation.TableLogic;
 import lombok.Data;
+import lombok.EqualsAndHashCode;
 
-import java.io.Serializable;
 import java.time.LocalDateTime;
 
 /**
@@ -13,14 +13,10 @@ import java.time.LocalDateTime;
  * @date 2018-07-02
  */
 @Data
-public class BaseDO implements Serializable {
+@EqualsAndHashCode(callSuper = true)
+public class BaseDO extends Key {
 
     private static final long serialVersionUID = 1L;
-
-    /**
-     * id
-     */
-    private Long id;
 
     /**
      * 创建人

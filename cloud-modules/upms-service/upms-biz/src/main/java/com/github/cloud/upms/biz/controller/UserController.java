@@ -25,6 +25,12 @@ public class UserController {
 
     private final UserService userService;
 
+    /**
+     * 获取用户详情
+     *
+     * @param account 登录账号
+     * @return 用户详情
+     */
     @ApiIgnore
     @GetMapping("/info/{account}")
     public Result<UserDTO> queryUserInfo(@PathVariable("account") String account) {
