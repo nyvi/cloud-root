@@ -3,9 +3,14 @@ package com.github.cloud.common.mybatis.service.impl;
 import com.baomidou.mybatisplus.core.conditions.Wrapper;
 import com.baomidou.mybatisplus.core.enums.SqlMethod;
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
+import com.baomidou.mybatisplus.core.metadata.IPage;
 import com.baomidou.mybatisplus.core.toolkit.GlobalConfigUtils;
 import com.baomidou.mybatisplus.core.toolkit.ReflectionKit;
 import com.baomidou.mybatisplus.core.toolkit.sql.SqlHelper;
+import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
+import com.github.cloud.common.core.request.PageRequest;
+import com.github.cloud.common.mybatis.dto.PageDTO;
+import com.github.cloud.common.mybatis.dto.Pagination;
 import com.github.cloud.common.mybatis.entity.Key;
 import com.github.cloud.common.mybatis.service.BaseService;
 import org.apache.ibatis.session.SqlSession;
@@ -98,6 +103,15 @@ public class BaseServiceImpl<M extends BaseMapper<T>, T extends Key> implements 
     @Override
     public List<T> list(Wrapper<T> queryWrapper) {
         return baseMapper.selectList(queryWrapper);
+    }
+
+    @Override
+    public <Q extends PageRequest> PageDTO<T> listPage(Q query, Wrapper<T> queryWrapper) {
+        Page<T> page = new Page<>(query.getCurrentPage(), query.getPageSize());
+        page.setAscs(query.getAscList());
+        page.setDescs(query.getDescList());
+        IPage<T> result = baseMapper.selectPage(page, queryWrapper);
+        return PageDTO.build(Pagination.build(result.getCurrent(), result.getSize(), result.getTotal()), result.getRecords());
     }
 
     /**

@@ -1,6 +1,8 @@
 package com.github.cloud.common.mybatis.service;
 
 import com.baomidou.mybatisplus.core.conditions.Wrapper;
+import com.github.cloud.common.core.request.PageRequest;
+import com.github.cloud.common.mybatis.dto.PageDTO;
 import com.github.cloud.common.mybatis.entity.Key;
 
 import javax.annotation.Nonnull;
@@ -100,4 +102,14 @@ public interface BaseService<T extends Key> {
      * @return 实体结果
      */
     List<T> list(Wrapper<T> queryWrapper);
+
+    /**
+     * 分页查询
+     *
+     * @param query        查询参数
+     * @param queryWrapper 查询条件
+     * @param <Q>          查询参数类型
+     * @return 返回数据
+     */
+    <Q extends PageRequest> PageDTO<T> listPage(Q query, Wrapper<T> queryWrapper);
 }
