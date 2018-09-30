@@ -1,6 +1,7 @@
 package com.github.cloud.common.mybatis.entity;
 
 import com.baomidou.mybatisplus.annotation.TableLogic;
+import com.baomidou.mybatisplus.annotation.Version;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 
@@ -47,5 +48,6 @@ public class BaseDO extends Key {
     /**
      * 版本号
      */
+    @Version
     private Long versionNo;
 }

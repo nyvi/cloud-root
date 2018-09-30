@@ -36,8 +36,16 @@ public final class Result<T> implements Serializable {
      */
     private T data;
 
+    public static <T> Result<T> success() {
+        return new Result<>(ResultCode.SUCCESS.code(), "success", null);
+    }
+
     public static <T> Result<T> success(T data) {
         return new Result<>(ResultCode.SUCCESS.code(), "success", data);
+    }
+
+    public static <T> Result<T> error() {
+        return new Result<>(ResultCode.ERROR.code(), "操作失败", null);
     }
 
     public static <T> Result<T> error(String msg, T data) {
