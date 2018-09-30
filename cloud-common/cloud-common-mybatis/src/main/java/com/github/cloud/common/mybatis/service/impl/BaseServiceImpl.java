@@ -3,16 +3,14 @@ package com.github.cloud.common.mybatis.service.impl;
 import com.baomidou.mybatisplus.core.conditions.Wrapper;
 import com.baomidou.mybatisplus.core.enums.SqlMethod;
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
-import com.baomidou.mybatisplus.core.metadata.IPage;
 import com.baomidou.mybatisplus.core.toolkit.GlobalConfigUtils;
 import com.baomidou.mybatisplus.core.toolkit.ReflectionKit;
 import com.baomidou.mybatisplus.core.toolkit.sql.SqlHelper;
-import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
-import com.github.cloud.common.core.request.PageRequest;
 import com.github.cloud.common.mybatis.dto.PageDTO;
-import com.github.cloud.common.mybatis.dto.Pagination;
 import com.github.cloud.common.mybatis.entity.Key;
+import com.github.cloud.common.mybatis.request.PageRequest;
 import com.github.cloud.common.mybatis.service.BaseService;
+import com.github.cloud.common.mybatis.util.PageHelper;
 import org.apache.ibatis.session.SqlSession;
 import org.mybatis.spring.SqlSessionUtils;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -21,6 +19,7 @@ import org.springframework.transaction.annotation.Transactional;
 import javax.annotation.Nonnull;
 import java.util.Collection;
 import java.util.List;
+import java.util.Optional;
 
 /**
  * @author : czk
@@ -86,11 +85,12 @@ public class BaseServiceImpl<M extends BaseMapper<T>, T extends Key> implements 
     }
 
     @Override
-    public T getById(@Nonnull Long id) {
-        return baseMapper.selectById(id);
+    public Optional<T> getById(@Nonnull Long id) {
+        return Optional.ofNullable(baseMapper.selectById(id));
     }
 
     @Override
+    @Nonnull
     public List<T> listByIds(@Nonnull Collection<Long> idList) {
         return baseMapper.selectBatchIds(idList);
     }
@@ -100,18 +100,16 @@ public class BaseServiceImpl<M extends BaseMapper<T>, T extends Key> implements 
         return SqlHelper.retCount(baseMapper.selectCount(queryWrapper));
     }
 
+    @Nonnull
     @Override
     public List<T> list(Wrapper<T> queryWrapper) {
         return baseMapper.selectList(queryWrapper);
     }
 
+    @Nonnull
     @Override
-    public <Q extends PageRequest> PageDTO<T> listPage(Q query, Wrapper<T> queryWrapper) {
-        Page<T> page = new Page<>(query.getCurrentPage(), query.getPageSize());
-        page.setAscs(query.getAscList());
-        page.setDescs(query.getDescList());
-        IPage<T> result = baseMapper.selectPage(page, queryWrapper);
-        return PageDTO.build(Pagination.build(result.getCurrent(), result.getSize(), result.getTotal()), result.getRecords());
+    public <Q extends PageRequest> PageDTO<T> listPage(@Nonnull Q query, Wrapper<T> queryWrapper) {
+        return PageHelper.convert(baseMapper.selectPage(query.convertFor(), queryWrapper));
     }
 
     /**

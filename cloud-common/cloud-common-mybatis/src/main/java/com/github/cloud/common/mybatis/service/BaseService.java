@@ -1,13 +1,14 @@
 package com.github.cloud.common.mybatis.service;
 
 import com.baomidou.mybatisplus.core.conditions.Wrapper;
-import com.github.cloud.common.core.request.PageRequest;
 import com.github.cloud.common.mybatis.dto.PageDTO;
 import com.github.cloud.common.mybatis.entity.Key;
+import com.github.cloud.common.mybatis.request.PageRequest;
 
 import javax.annotation.Nonnull;
 import java.util.Collection;
 import java.util.List;
+import java.util.Optional;
 
 /**
  * @author : czk
@@ -77,7 +78,7 @@ public interface BaseService<T extends Key> {
      * @param id id
      * @return 实体对象
      */
-    T getById(@Nonnull Long id);
+    Optional<T> getById(@Nonnull Long id);
 
     /**
      * 查询（根据ID 批量查询）
@@ -85,6 +86,7 @@ public interface BaseService<T extends Key> {
      * @param idList 主键ID列表
      * @return 实体对象列表
      */
+    @Nonnull
     List<T> listByIds(@Nonnull Collection<Long> idList);
 
     /**
@@ -101,6 +103,7 @@ public interface BaseService<T extends Key> {
      * @param queryWrapper 实体对象封装操作类
      * @return 实体结果
      */
+    @Nonnull
     List<T> list(Wrapper<T> queryWrapper);
 
     /**
@@ -111,5 +114,6 @@ public interface BaseService<T extends Key> {
      * @param <Q>          查询参数类型
      * @return 返回数据
      */
-    <Q extends PageRequest> PageDTO<T> listPage(Q query, Wrapper<T> queryWrapper);
+    @Nonnull
+    <Q extends PageRequest> PageDTO<T> listPage(@Nonnull Q query, Wrapper<T> queryWrapper);
 }

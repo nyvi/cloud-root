@@ -16,17 +16,17 @@ public class Pagination {
     /**
      * 当前页
      */
-    private Long current;
+    private long current;
 
     /**
      * 每页显示个数
      */
-    private Long pageSize;
+    private long pageSize;
 
     /**
      * 总个数
      */
-    private Long total;
+    private long total;
 
     /**
      * @param current  当前页
@@ -34,7 +34,7 @@ public class Pagination {
      * @param total    总条数
      * @return 分页参数
      */
-    public static Pagination build(Long current, Long pageSize, Long total) {
+    public static Pagination build(long current, long pageSize, long total) {
         return new Pagination(current, pageSize, total);
     }
 
