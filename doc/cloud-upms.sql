@@ -1,5 +1,3 @@
-
-
 SET NAMES utf8mb4;
 SET FOREIGN_KEY_CHECKS = 0;
 
@@ -12,6 +10,7 @@ CREATE TABLE `sys_menu`  (
   `menu_name` varchar(20) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL COMMENT '菜单名称',
   `uri` varchar(50) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT NULL COMMENT 'URI',
   `icon` varchar(20) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT NULL COMMENT '图标',
+  `permissions` varchar(50) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT NULL,
   `type` tinyint(20) NOT NULL COMMENT '类型:1-目录,2-菜单,3-按钮',
   `parent_id` bigint(20) DEFAULT NULL COMMENT '上级ID',
   `create_by` bigint(20) NOT NULL COMMENT '创建人',
@@ -29,7 +28,7 @@ CREATE TABLE `sys_menu`  (
 DROP TABLE IF EXISTS `sys_role`;
 CREATE TABLE `sys_role`  (
   `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT COMMENT '主键',
-  `role_mame` varchar(20) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL COMMENT '角色名',
+  `role_name` varchar(20) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL COMMENT '角色名',
   `role_code` varchar(20) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL COMMENT '角色编码',
   `create_by` bigint(20) NOT NULL COMMENT '创建人',
   `gmt_create` datetime(0) NOT NULL COMMENT '创建时间',
