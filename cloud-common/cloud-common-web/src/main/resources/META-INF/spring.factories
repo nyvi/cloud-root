@@ -1,0 +1,4 @@
+org.springframework.boot.autoconfigure.EnableAutoConfiguration=\
+  com.github.cloud.common.web.interceptor.RepeatSubmitInterceptor,\
+  com.github.cloud.common.web.config.FilterConfig,\
+  com.github.cloud.common.web.config.WebConfig

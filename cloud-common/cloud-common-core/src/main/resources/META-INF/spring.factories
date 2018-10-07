@@ -1,3 +1,4 @@
 org.springframework.boot.autoconfigure.EnableAutoConfiguration=\
+  com.github.cloud.common.core.cache.impl.RedisImpl,\
   com.github.cloud.common.core.config.JacksonConfig,\
   com.github.cloud.common.core.config.RedisConfig

@@ -6,11 +6,11 @@ package com.github.cloud.common.core.exception;
  * @author : czk
  * @date 2018-07-18
  */
-public class RepeatedSubmitException extends RuntimeException {
+public class RepeatSubmitException extends RuntimeException {
 
     private static final long serialVersionUID = -2602736863286555L;
 
-    public RepeatedSubmitException() {
+    public RepeatSubmitException() {
     }
 
     @Override

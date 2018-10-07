@@ -1,5 +1,6 @@
 package com.github.cloud.upms.biz.controller;
 
+import com.github.cloud.common.core.annotations.RepeatSubmit;
 import com.github.cloud.common.core.util.Result;
 import com.github.cloud.upms.api.dto.UserDTO;
 import com.github.cloud.upms.biz.request.UserInsertRequest;
@@ -48,6 +49,7 @@ public class UserController {
      * @param userInsertRequest 请求参数
      * @return 成功返回true, 失败返回false
      */
+    @RepeatSubmit
     @PostMapping("saveOrUpdate")
     @ApiOperation(value = "用户保存/更新")
     public Result<Boolean> saveOrUpdate(@RequestBody UserInsertRequest userInsertRequest) {

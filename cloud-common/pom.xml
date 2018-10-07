@@ -20,6 +20,7 @@
         <module>cloud-common-security</module>
         <module>cloud-common-mybatis</module>
         <module>cloud-common-swagger</module>
+        <module>cloud-common-web</module>
     </modules>
 
 </project>

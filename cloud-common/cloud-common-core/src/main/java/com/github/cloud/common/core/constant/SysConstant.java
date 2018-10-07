@@ -11,20 +11,20 @@ public interface SysConstant {
     /**
      * token 请求头名称
      */
-    String HEAD_AUTHORIZATION = "Authorization";
+    String HEAD_AUTHORIZATION = "authorization";
 
     /**
      * token 分割符
      */
-    String TOKEN_SPLIT = "Bearer ";
+    String TOKEN_SPLIT = "bearer ";
 
     /**
      * UTF-8 编码
      */
-    String UTF8 = "UTF-8";
+    String UTF8 = "utf-8";
 
     /**
      * content_type
      */
-    String CONTENT_TYPE = "application/json; charset=utf-8";
+    String CONTENT_TYPE = "application/json;charset=utf-8";
 }
