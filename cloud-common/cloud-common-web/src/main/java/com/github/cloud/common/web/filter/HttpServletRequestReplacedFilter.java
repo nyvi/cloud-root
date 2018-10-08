@@ -1,13 +1,15 @@
 package com.github.cloud.common.web.filter;
 
 
-import javax.servlet.Filter;
+import com.github.cloud.common.core.constant.SysConstant;
+import com.github.cloud.common.core.util.StrUtils;
+import org.springframework.web.filter.OncePerRequestFilter;
+
+import javax.annotation.Nonnull;
 import javax.servlet.FilterChain;
-import javax.servlet.FilterConfig;
 import javax.servlet.ServletException;
-import javax.servlet.ServletRequest;
-import javax.servlet.ServletResponse;
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
 /**
@@ -16,32 +18,16 @@ import java.io.IOException;
  * @author : czk
  * @date 2018-10-07
  */
-public class HttpServletRequestReplacedFilter implements Filter {
+public class HttpServletRequestReplacedFilter extends OncePerRequestFilter {
 
     @Override
-    public void init(FilterConfig filterConfig) {
+    protected void doFilterInternal(@Nonnull HttpServletRequest request, @Nonnull HttpServletResponse response, @Nonnull FilterChain filterChain) throws ServletException, IOException {
 
-    }
-
-    @Override
-    public void doFilter(ServletRequest request, ServletResponse response, FilterChain chain) throws IOException, ServletException {
-
-        ServletRequest requestWrapper = null;
-
-        if (request instanceof HttpServletRequest) {
-            requestWrapper = new CustomHttpServletRequestWrapper((HttpServletRequest) request);
-        }
-
-        if (requestWrapper == null) {
-            chain.doFilter(request, response);
+        if (StrUtils.isNotBlank(request.getContentType()) && StrUtils.containsIgnoreCase(request.getContentType(), SysConstant.CONTENT_TYPE)) {
+            filterChain.doFilter(new CustomHttpServletRequestWrapper(request), response);
         } else {
-            chain.doFilter(requestWrapper, response);
+            filterChain.doFilter(request, response);
         }
-
-    }
-
-    @Override
-    public void destroy() {
 
     }
 
