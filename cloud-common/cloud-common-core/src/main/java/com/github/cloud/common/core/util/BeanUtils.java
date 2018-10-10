@@ -83,7 +83,7 @@ public class BeanUtils {
      * @param targetClass the target class
      * @return BeanCopier
      */
-    private static BeanCopier getBeanCopier(Class sourceClass, Class targetClass) {
+    private static BeanCopier getBeanCopier(Class<?> sourceClass, Class<?> targetClass) {
         String beanKey = generateKey(sourceClass, targetClass);
         BeanCopier copier;
         if (BEAN_COPIER_CACHE.containsKey(beanKey)) {

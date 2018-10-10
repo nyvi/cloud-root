@@ -11,6 +11,7 @@ import com.fasterxml.jackson.datatype.jsr310.deser.LocalTimeDeserializer;
 import com.fasterxml.jackson.datatype.jsr310.ser.LocalDateSerializer;
 import com.fasterxml.jackson.datatype.jsr310.ser.LocalDateTimeSerializer;
 import com.fasterxml.jackson.datatype.jsr310.ser.LocalTimeSerializer;
+import com.github.cloud.common.core.covert.StringJsonDeserializer;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
@@ -48,8 +49,8 @@ public class JacksonConfig {
         simpleModule.addSerializer(Long.class, ToStringSerializer.instance);
         simpleModule.addSerializer(Long.TYPE, ToStringSerializer.instance);
 
-        // String 去空格
-        simpleModule.addDeserializer(String.class, new StringTrimDeserializer());
+        // String 去空格 && 防止XSS
+        simpleModule.addDeserializer(String.class, new StringJsonDeserializer());
 
         objectMapper.registerModule(javaTimeModule);
         objectMapper.registerModule(simpleModule);
