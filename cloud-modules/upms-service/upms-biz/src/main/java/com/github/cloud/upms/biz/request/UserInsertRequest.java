@@ -5,6 +5,8 @@ import io.swagger.annotations.ApiModelProperty;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 
+import javax.validation.constraints.NotBlank;
+
 
 /**
  * @author : czk
@@ -19,15 +21,19 @@ public class UserInsertRequest extends BaseRequest {
     @ApiModelProperty(value = "ID")
     private Long id;
 
+    @NotBlank
     @ApiModelProperty(value = "账号", required = true)
     private String account;
 
+    @NotBlank
     @ApiModelProperty(value = "手机号", required = true)
     private String phone;
 
+    @NotBlank
     @ApiModelProperty(value = "用户名", required = true)
     private String userName;
 
+    @NotBlank
     @ApiModelProperty(value = "密码", required = true)
     private String pwd;
 

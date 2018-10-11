@@ -2,6 +2,7 @@ package com.github.cloud.upms.biz.controller;
 
 import com.github.cloud.common.core.annotations.RepeatSubmit;
 import com.github.cloud.common.core.util.Result;
+import com.github.cloud.common.web.util.ServiceHelper;
 import com.github.cloud.upms.api.dto.UserDTO;
 import com.github.cloud.upms.biz.request.UserInsertRequest;
 import com.github.cloud.upms.biz.service.UserService;
@@ -53,6 +54,6 @@ public class UserController {
     @PostMapping("saveOrUpdate")
     @ApiOperation(value = "用户保存/更新")
     public Result<Boolean> saveOrUpdate(@RequestBody UserInsertRequest userInsertRequest) {
-        return userService.saveOrUpdate(userInsertRequest);
+        return ServiceHelper.execute(userInsertRequest, () -> userService.saveOrUpdate(userInsertRequest));
     }
 }
