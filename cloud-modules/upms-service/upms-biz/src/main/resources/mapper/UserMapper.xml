@@ -24,4 +24,32 @@
           AND a.active = 1
     </select>
 
+    <!-- 分页查询 -->
+    <select id="listPage" resultType="com.github.cloud.upms.biz.vo.UserVO">
+        SELECT a.id, a.account, a.user_name, a.phone, a.version_no
+        FROM sys_user a
+        WHERE a.active = 1
+        <if test="pm.account != null and pm.account != ''">
+            AND a.account LIKE CONCAT(#{account, jdbcType = VARCHAR}, '%')
+        </if>
+        <if test="pm.phone != null and pm.phone != ''">
+            AND a.phone = #{phone, jdbcType = VARCHAR}
+        </if>
+        <if test="pm.userName != null and pm.userName != ''">
+            AND a.user_name = #{userName, jdbcType = VARCHAR}
+        </if>
+    </select>
+
+    <!-- 删除 -->
+    <update id="delete" parameterType="com.github.cloud.common.core.request.DeleteRequest">
+        UPDATE sys_user a
+        SET a.active     = 0,
+            a.modify_by  = #{modifyBy, jdbcType = BIGINT},
+            a.gmt_modify = sysdate(),
+            a.version_no = a.version_no + 1
+        WHERE a.id = #{id, jdbcType = BIGINT}
+          AND a.active = 1
+          AND a.version_no = #{versionNo, jdbcType = BIGINT}
+    </update>
+
 </mapper>

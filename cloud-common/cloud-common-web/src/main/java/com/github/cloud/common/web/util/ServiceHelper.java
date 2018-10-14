@@ -6,6 +6,7 @@ import com.github.cloud.common.core.request.BaseRequest;
 import com.github.cloud.common.core.util.CollectionUtils;
 import com.github.cloud.common.core.util.Result;
 import com.github.cloud.common.core.util.StrUtils;
+import lombok.NonNull;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.lang.Nullable;
 
@@ -36,7 +37,7 @@ public class ServiceHelper {
      * @param <V>     请求类型
      * @return 返回结果
      */
-    public static <V extends BaseRequest, T> Result<T> execute(V v, ServiceCallBack<T> action, Class<?>... classes) {
+    public static <V extends BaseRequest, T> Result<T> execute(@NonNull V v, @NonNull ServiceCallBack<T> action, Class<?>... classes) {
         // 执行参数验证
         String resultMsg = validation(v, classes);
         if (StrUtils.isNotBlank(resultMsg)) {
@@ -49,7 +50,7 @@ public class ServiceHelper {
             if (ex instanceof ServiceException) {
                 return Result.failed(ResultCode.ERROR, ex.getMessage());
             } else {
-                log.error("系统异常", ex);
+                log.error("系统异常:", ex);
             }
             return Result.error();
         }
@@ -64,7 +65,7 @@ public class ServiceHelper {
      * @return 错误信息
      */
     @Nullable
-    public static <V extends BaseRequest> String validation(V v, Class<?>... classes) {
+    public static <V extends BaseRequest> String validation(@NonNull V v, Class<?>... classes) {
         Validator validator = globalValidator.getValidator();
         Set<ConstraintViolation<V>> set = validator.validate(v, classes);
 

@@ -1,10 +1,14 @@
 package com.github.cloud.upms.biz.service;
 
+import com.github.cloud.common.core.request.DeleteRequest;
 import com.github.cloud.common.core.util.Result;
+import com.github.cloud.common.mybatis.dto.PageDTO;
 import com.github.cloud.common.mybatis.service.BaseService;
 import com.github.cloud.upms.api.dto.UserDTO;
 import com.github.cloud.upms.biz.entity.SysUserDO;
 import com.github.cloud.upms.biz.request.UserInsertRequest;
+import com.github.cloud.upms.biz.request.UserQueryRequest;
+import com.github.cloud.upms.biz.vo.UserVO;
 
 /**
  * @author : czk
@@ -27,4 +31,23 @@ public interface UserService extends BaseService<SysUserDO> {
      * @return 成功返回true, 失败返回false
      */
     Result<Boolean> saveOrUpdate(UserInsertRequest userInsertRequest);
+
+
+    /**
+     * 分页查询
+     *
+     * @param request 请求参数
+     * @return 用户列表
+     */
+    Result<PageDTO<UserVO>> listPage(UserQueryRequest request);
+
+
+    /**
+     * 删除
+     *
+     * @param deleteRequest 删除参数
+     * @return 成功返回true, 失败返回false
+     */
+    Result<Boolean> delete(DeleteRequest deleteRequest);
+
 }

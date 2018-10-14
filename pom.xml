@@ -26,7 +26,7 @@
         <swagger.version>2.9.2</swagger.version>
         <cloud.version>1.0-SNAPSHOT</cloud.version>
         <fastjson.version>1.2.47</fastjson.version>
-        <mybatis-plus.version>3.0.3</mybatis-plus.version>
+        <mybatis-plus.version>3.0.5</mybatis-plus.version>
         <spring-boot.version>2.0.4.RELEASE</spring-boot.version>
         <spring-cloud.version>Finchley.SR1</spring-cloud.version>
         <security.oauth.version>2.3.3.RELEASE</security.oauth.version>

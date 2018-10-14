@@ -20,12 +20,12 @@ public class PageRequest extends BaseRequest {
     /**
      * 当前页码
      */
-    private long currentPage;
+    private long currentPage = 1;
 
     /**
      * 每页显示个数
      */
-    private long pageSize;
+    private long pageSize = 10;
 
     /**
      * 排序 ASC

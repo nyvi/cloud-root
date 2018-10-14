@@ -1,16 +1,21 @@
 package com.github.cloud.upms.biz.service.impl;
 
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
+import com.github.cloud.common.core.request.DeleteRequest;
 import com.github.cloud.common.core.util.BeanUtils;
 import com.github.cloud.common.core.util.CollectionUtils;
 import com.github.cloud.common.core.util.Result;
+import com.github.cloud.common.mybatis.dto.PageDTO;
 import com.github.cloud.common.mybatis.service.impl.BaseServiceImpl;
+import com.github.cloud.common.mybatis.util.PageHelper;
 import com.github.cloud.upms.api.dto.UserDTO;
 import com.github.cloud.upms.biz.entity.SysRoleDO;
 import com.github.cloud.upms.biz.entity.SysUserDO;
 import com.github.cloud.upms.biz.mapper.UserMapper;
 import com.github.cloud.upms.biz.request.UserInsertRequest;
+import com.github.cloud.upms.biz.request.UserQueryRequest;
 import com.github.cloud.upms.biz.service.UserService;
+import com.github.cloud.upms.biz.vo.UserVO;
 import lombok.AllArgsConstructor;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
@@ -81,4 +86,15 @@ public class UserServiceImpl extends BaseServiceImpl<UserMapper, SysUserDO> impl
 
         return this.saveOrUpdate(sysUserDO) ? Result.success() : Result.error();
     }
+
+    @Override
+    public Result<PageDTO<UserVO>> listPage(UserQueryRequest request) {
+        return Result.success(PageHelper.convert(userMapper.listPage(request.convertFor(), request)));
+    }
+
+    @Override
+    public Result<Boolean> delete(DeleteRequest deleteRequest) {
+        return userMapper.delete(deleteRequest) > 0 ? Result.success() : Result.error();
+    }
+
 }

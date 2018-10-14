@@ -1,5 +1,6 @@
 package com.github.cloud.common.core.util;
 
+import com.fasterxml.jackson.annotation.JsonInclude;
 import com.github.cloud.common.core.constant.enums.ResultCode;
 import com.github.cloud.common.core.exception.ServiceException;
 import lombok.AllArgsConstructor;
@@ -17,6 +18,7 @@ import java.io.Serializable;
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
+@JsonInclude(JsonInclude.Include.NON_NULL)
 public final class Result<T> implements Serializable {
 
     private static final long serialVersionUID = 1L;
