@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.github.cloud.upms.biz.mapper.RoleMapper">
+
+    <!-- 角色分页查询 -->
+    <select id="listPage" resultType="com.github.cloud.upms.biz.vo.RoleVO">
+        SELECT
+        a.id,
+        a.role_name as `roleName`,
+        a.role_code as `roleCode`,
+        a.version_no as `versionNo`
+        FROM sys_role a
+        WHERE a.active = 1
+        <if test="pm.roleName != null and pm.roleName != ''">
+            AND a.role_name = #{roleName, jdbcType = VARCHAR}
+        </if>
+        <if test="pm.roleCode != null and pm.roleCode != ''">
+            AND a.role_code = #{roleCode, jdbcType = VARCHAR}
+        </if>
+    </select>
+
+
+
+</mapper>
