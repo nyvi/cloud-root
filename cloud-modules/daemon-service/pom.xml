@@ -1,23 +1,19 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<project xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-         xmlns="http://maven.apache.org/POM/4.0.0"
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <parent>
-        <artifactId>cloud-root</artifactId>
+        <artifactId>cloud-modules</artifactId>
         <groupId>com.github</groupId>
         <version>1.0-SNAPSHOT</version>
     </parent>
     <modelVersion>4.0.0</modelVersion>
 
-    <artifactId>cloud-modules</artifactId>
+    <artifactId>daemon-service</artifactId>
     <packaging>pom</packaging>
-
-    <name>cloud-modules</name>
-    <description>cloud-modules</description>
-
     <modules>
-        <module>upms-service</module>
-        <module>daemon-service</module>
+        <module>daemon-biz</module>
     </modules>
+
 
 </project>

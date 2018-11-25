@@ -4,11 +4,11 @@ import com.github.cloud.common.core.util.Result;
 import com.github.cloud.common.mybatis.dto.PageDTO;
 import com.github.cloud.common.mybatis.service.impl.BaseServiceImpl;
 import com.github.cloud.common.mybatis.util.PageHelper;
-import com.github.cloud.upms.biz.entity.SysRoleDO;
+import com.github.cloud.upms.biz.domain.entity.SysRoleDO;
+import com.github.cloud.upms.biz.domain.request.RoleQueryRequest;
+import com.github.cloud.upms.biz.domain.vo.RoleVO;
 import com.github.cloud.upms.biz.mapper.RoleMapper;
-import com.github.cloud.upms.biz.request.RoleQueryRequest;
 import com.github.cloud.upms.biz.service.RoleService;
-import com.github.cloud.upms.biz.vo.RoleVO;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
 

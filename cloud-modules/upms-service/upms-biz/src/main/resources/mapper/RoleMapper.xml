@@ -3,7 +3,7 @@
 <mapper namespace="com.github.cloud.upms.biz.mapper.RoleMapper">
 
     <!-- 角色分页查询 -->
-    <select id="listPage" resultType="com.github.cloud.upms.biz.vo.RoleVO">
+    <select id="listPage" resultType="com.github.cloud.upms.biz.domain.vo.RoleVO">
         SELECT
         a.id,
         a.role_name as `roleName`,

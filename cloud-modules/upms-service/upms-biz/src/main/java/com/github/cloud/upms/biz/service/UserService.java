@@ -5,10 +5,10 @@ import com.github.cloud.common.core.util.Result;
 import com.github.cloud.common.mybatis.dto.PageDTO;
 import com.github.cloud.common.mybatis.service.BaseService;
 import com.github.cloud.upms.api.dto.UserDTO;
-import com.github.cloud.upms.biz.entity.SysUserDO;
-import com.github.cloud.upms.biz.request.UserInsertRequest;
-import com.github.cloud.upms.biz.request.UserQueryRequest;
-import com.github.cloud.upms.biz.vo.UserVO;
+import com.github.cloud.upms.biz.domain.entity.SysUserDO;
+import com.github.cloud.upms.biz.domain.request.UserInsertRequest;
+import com.github.cloud.upms.biz.domain.request.UserQueryRequest;
+import com.github.cloud.upms.biz.domain.vo.UserVO;
 
 /**
  * @author : czk

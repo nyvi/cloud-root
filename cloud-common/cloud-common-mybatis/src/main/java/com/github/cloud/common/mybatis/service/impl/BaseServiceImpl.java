@@ -5,7 +5,7 @@ import com.baomidou.mybatisplus.core.enums.SqlMethod;
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
 import com.baomidou.mybatisplus.core.toolkit.GlobalConfigUtils;
 import com.baomidou.mybatisplus.core.toolkit.ReflectionKit;
-import com.baomidou.mybatisplus.core.toolkit.sql.SqlHelper;
+import com.baomidou.mybatisplus.extension.toolkit.SqlHelper;
 import com.github.cloud.common.mybatis.dto.PageDTO;
 import com.github.cloud.common.mybatis.entity.Key;
 import com.github.cloud.common.mybatis.request.PageRequest;

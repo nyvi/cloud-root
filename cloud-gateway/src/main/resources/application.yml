@@ -24,6 +24,13 @@ spring:
         filters:
         - StripPrefix=1
 
+      - id: daemon-server
+        uri: lb://DAEMON-SERVER
+        predicates:
+        - Path=/daemon/**
+        filters:
+        - StripPrefix=1
+
       - id: auth-server
         uri: lb://AUTH-SERVER
         predicates:

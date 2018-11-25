@@ -1,4 +1,4 @@
-package com.github.cloud.upms.biz.request;
+package com.github.cloud.upms.biz.domain.request;
 
 import com.github.cloud.common.mybatis.request.PageRequest;
 import io.swagger.annotations.ApiModelProperty;

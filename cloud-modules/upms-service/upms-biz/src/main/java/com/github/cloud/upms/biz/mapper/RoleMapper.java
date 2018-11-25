@@ -3,9 +3,9 @@ package com.github.cloud.upms.biz.mapper;
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
 import com.baomidou.mybatisplus.core.metadata.IPage;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
-import com.github.cloud.upms.biz.entity.SysRoleDO;
-import com.github.cloud.upms.biz.request.RoleQueryRequest;
-import com.github.cloud.upms.biz.vo.RoleVO;
+import com.github.cloud.upms.biz.domain.entity.SysRoleDO;
+import com.github.cloud.upms.biz.domain.request.RoleQueryRequest;
+import com.github.cloud.upms.biz.domain.vo.RoleVO;
 import org.apache.ibatis.annotations.Param;
 
 /**

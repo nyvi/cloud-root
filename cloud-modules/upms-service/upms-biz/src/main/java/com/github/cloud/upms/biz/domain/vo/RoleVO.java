@@ -1,7 +1,7 @@
-package com.github.cloud.upms.biz.vo;
+package com.github.cloud.upms.biz.domain.vo;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
-import com.github.cloud.upms.biz.entity.SysRoleDO;
+import com.github.cloud.upms.biz.domain.entity.SysRoleDO;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 

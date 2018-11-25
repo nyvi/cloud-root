@@ -1,7 +1,7 @@
 package com.github.cloud.upms.biz.mapper;
 
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
-import com.github.cloud.upms.biz.entity.SysMenuDO;
+import com.github.cloud.upms.biz.domain.entity.SysMenuDO;
 
 /**
  * 菜单 Mapper

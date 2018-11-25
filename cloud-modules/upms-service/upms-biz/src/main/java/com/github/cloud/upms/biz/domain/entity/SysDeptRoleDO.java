@@ -1,4 +1,4 @@
-package com.github.cloud.upms.biz.entity;
+package com.github.cloud.upms.biz.domain.entity;
 
 
 import com.github.cloud.common.mybatis.entity.BaseDO;

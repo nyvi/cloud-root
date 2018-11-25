@@ -4,7 +4,7 @@ import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.baomidou.mybatisplus.core.metadata.IPage;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.github.cloud.upms.biz.UpmsApplication;
-import com.github.cloud.upms.biz.entity.SysUserDO;
+import com.github.cloud.upms.biz.domain.entity.SysUserDO;
 import com.github.cloud.upms.biz.mapper.UserMapper;
 import org.junit.Test;
 import org.junit.runner.RunWith;

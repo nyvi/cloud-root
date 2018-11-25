@@ -1,4 +1,4 @@
-package com.github.cloud.upms.biz.request;
+package com.github.cloud.upms.biz.domain.request;
 
 import com.github.cloud.common.core.request.BaseRequest;
 import io.swagger.annotations.ApiModelProperty;
