@@ -13,7 +13,7 @@ import org.springframework.security.oauth2.config.annotation.web.configurers.Res
 
 /**
  * @author : czk
- * @date 2018-09-06
+ * @date 2018-11-29
  */
 @Configuration
 @AllArgsConstructor
@@ -29,7 +29,6 @@ public class ResourceServerConfigurer extends ResourceServerConfigurerAdapter {
     public void configure(HttpSecurity http) throws Exception {
         http.authorizeRequests()
                 .antMatchers("/actuator/**",
-                        "/job/saveOrUpdate",
                         "/v2/api-docs").permitAll()
                 .anyRequest().authenticated()
                 .and().csrf().disable();

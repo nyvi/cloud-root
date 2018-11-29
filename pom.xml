@@ -29,7 +29,6 @@
         <mybatis-plus.version>3.0.6</mybatis-plus.version>
         <spring-boot.version>2.1.0.RELEASE</spring-boot.version>
         <spring-cloud.version>Greenwich.M3</spring-cloud.version>
-        <security.oauth.version>2.3.3.RELEASE</security.oauth.version>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
     </properties>

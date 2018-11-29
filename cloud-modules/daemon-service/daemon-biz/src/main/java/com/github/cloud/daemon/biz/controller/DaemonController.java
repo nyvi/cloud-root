@@ -11,6 +11,7 @@ import com.github.cloud.daemon.biz.domain.vo.QuartzVO;
 import com.github.cloud.daemon.biz.service.DaemonService;
 import io.swagger.annotations.ApiOperation;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -66,7 +67,7 @@ public class DaemonController {
         return ServiceHelper.execute(request, () -> daemonService.remove(request));
     }
 
-    @PostMapping("listPage")
+    @GetMapping("listPage")
     @ApiOperation("定时任务列表")
     public Result<PageDTO<QuartzVO>> listPage(@RequestBody SearchRequest request) {
         return ServiceHelper.execute(request, () -> daemonService.listPage(request));

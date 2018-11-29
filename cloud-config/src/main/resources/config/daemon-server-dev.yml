@@ -38,7 +38,7 @@ mybatis-plus:
 
 # swagger
 swagger:
-  basePackage: com.github.cloud.upms.biz.controller
+  basePackage: com.github.cloud.daemon.biz.controller
   title: 'Cloud Swagger API'
   description: ''
   version: '1.0.0'
