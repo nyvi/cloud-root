@@ -4,6 +4,8 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import java.io.Serializable;
+
 /**
  * @author : czk
  * @date 2018-09-29 17:30
@@ -11,7 +13,9 @@ import lombok.NoArgsConstructor;
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-public class Pagination {
+public class Pagination implements Serializable {
+
+    private static final long serialVersionUID = 3538287287381569154L;
 
     /**
      * 当前页

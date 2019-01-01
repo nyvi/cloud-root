@@ -17,6 +17,7 @@ import com.github.cloud.upms.biz.domain.vo.UserVO;
 import com.github.cloud.upms.biz.mapper.UserMapper;
 import com.github.cloud.upms.biz.service.UserService;
 import lombok.AllArgsConstructor;
+import org.springframework.cache.annotation.Cacheable;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
@@ -36,6 +37,7 @@ public class UserServiceImpl extends BaseServiceImpl<UserMapper, SysUserDO> impl
     private final UserMapper userMapper;
 
     @Override
+    @Cacheable(value = "user")
     public UserDTO queryUserByAccount(String account) {
         SysUserDO sysUserDO = userMapper.selectOne(new QueryWrapper<SysUserDO>().lambda().eq(SysUserDO::getAccount, account));
 
@@ -88,6 +90,7 @@ public class UserServiceImpl extends BaseServiceImpl<UserMapper, SysUserDO> impl
     }
 
     @Override
+    @Cacheable(value = "user")
     public Result<PageDTO<UserVO>> listPage(UserQueryRequest request) {
         return Result.success(PageHelper.convert(userMapper.listPage(request.convertFor(), request)));
     }

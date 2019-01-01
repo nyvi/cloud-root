@@ -3,6 +3,8 @@ package org.springframework.security.oauth2.provider.endpoint;
 
 import com.github.cloud.common.core.constant.enums.ResultCode;
 import com.github.cloud.common.core.util.Result;
+import com.github.cloud.upms.api.feign.RemoteUserService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpMethod;
 import org.springframework.http.HttpStatus;
@@ -48,6 +50,9 @@ public class TokenEndpoint extends AbstractEndpoint {
     private OAuth2RequestValidator oAuth2RequestValidator = new DefaultOAuth2RequestValidator();
 
     private Set<HttpMethod> allowedRequestMethods = new HashSet<>(Collections.singletonList(HttpMethod.POST));
+
+    @Autowired
+    private RemoteUserService remoteUserService;
 
     @GetMapping(value = "/oauth/token")
     public ResponseEntity<Result<OAuth2AccessToken>> getAccessToken(Principal principal, @RequestBody
@@ -115,6 +120,11 @@ public class TokenEndpoint extends AbstractEndpoint {
         if (token == null) {
             return getResponse(Result.failed(ResultCode.ERROR, "认证失败"));
         }
+
+        String username = parameters.get("username");
+
+        remoteUserService.queryUserInfo(username);
+
         return getResponse(Result.success(token));
 
     }

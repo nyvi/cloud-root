@@ -4,6 +4,7 @@ import com.github.cloud.common.core.request.BaseRequest;
 import io.swagger.annotations.ApiModelProperty;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
+import org.hibernate.validator.constraints.Length;
 
 import javax.validation.constraints.NotBlank;
 
@@ -22,18 +23,22 @@ public class UserInsertRequest extends BaseRequest {
     private Long id;
 
     @NotBlank
+    @Length(max = 20)
     @ApiModelProperty(value = "账号", required = true)
     private String account;
 
     @NotBlank
+    @Length(max = 11)
     @ApiModelProperty(value = "手机号", required = true)
     private String phone;
 
     @NotBlank
+    @Length(max = 20)
     @ApiModelProperty(value = "用户名", required = true)
     private String userName;
 
     @NotBlank
+    @Length(max = 20)
     @ApiModelProperty(value = "密码", required = true)
     private String pwd;
 
