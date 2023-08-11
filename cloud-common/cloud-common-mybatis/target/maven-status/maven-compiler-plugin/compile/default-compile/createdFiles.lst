@@ -1,0 +1,9 @@
+com\github\cloud\common\mybatis\service\BaseService.class
+com\github\cloud\common\mybatis\dto\PageDTO.class
+com\github\cloud\common\mybatis\request\PageRequest.class
+com\github\cloud\common\mybatis\dto\Pagination.class
+com\github\cloud\common\mybatis\entity\BaseDO.class
+com\github\cloud\common\mybatis\entity\Key.class
+com\github\cloud\common\mybatis\service\impl\BaseServiceImpl.class
+com\github\cloud\common\mybatis\config\MyBatisPlusConfig.class
+com\github\cloud\common\mybatis\util\PageHelper.class

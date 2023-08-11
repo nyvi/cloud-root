@@ -1,0 +1,3 @@
+com\github\cloud\upms\api\feign\fallback\RemoteUserServiceFallbackImpl.class
+com\github\cloud\upms\api\dto\UserDTO.class
+com\github\cloud\upms\api\feign\RemoteUserService.class

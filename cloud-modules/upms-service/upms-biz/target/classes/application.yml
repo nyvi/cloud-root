@@ -1,0 +1,29 @@
+server:
+  port: 3002
+spring:
+  application:
+    name: upms-server
+  cloud:
+    nacos:
+      ## 注册中心配置
+      discovery:
+        # nacos的服务地址，nacos-server中IP地址:端口号
+        server-addr: 172.18.255.67:8848
+  datasource:
+    driverClassName: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://rm-bp13hzi0hu0v257va4o.mysql.rds.aliyuncs.com:3306/cloud-auth-server?useUnicode=true&characterEncoding=UTF-8&zeroDateTimeBehavior=convertToNull&useSSL=false&allowMultiQueries=true&serverTimezone=Asia/Shanghai&allowPublicKeyRetrieval=true
+    username: root
+    password: SA57Lj5vRL5tRe3
+  redis:
+    host: 172.18.255.8
+    port: 6379
+    password: 123456
+    database: 0
+
+mybatis-plus:
+  # 包扫描路径(当前项目的实体类所在位置。别名包扫描路径，通过该属性可以给包中的类注册别名，多个路径用逗号分割)
+  type-aliases-package: com.github.cloud.upms.biz.domain.entity
+  # xml扫描，多个目录用逗号或者分号分隔(告诉 Mapper 所对应的 XML 文件位置)
+  mapper-locations: classpath:mapper/*.xml
+  configuration:
+    log-impl: org.apache.ibatis.logging.stdout.StdOutImpl #开启sql日志,方便定位sql的准确性

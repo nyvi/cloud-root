@@ -1,0 +1,6 @@
+com\github\cloud\common\swagger\config\SwaggerAutoConfiguration.class
+com\github\cloud\common\swagger\config\Authorization.class
+com\github\cloud\common\swagger\annotation\EnableCloudSwagger2.class
+com\github\cloud\common\swagger\config\AuthorizationScope.class
+com\github\cloud\common\swagger\config\Contact.class
+com\github\cloud\common\swagger\config\SwaggerProperties.class

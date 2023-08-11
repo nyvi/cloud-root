@@ -1,0 +1,19 @@
+server:
+  port: 3001
+spring:
+  application:
+    name: auth-server
+  cloud:
+    nacos:
+      discovery:
+        server-addr: 172.18.255.67:8848
+  datasource:
+    driverClassName: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://rm-bp13hzi0hu0v257va4o.mysql.rds.aliyuncs.com:3306/cloud-auth-server?useUnicode=true&characterEncoding=UTF-8&zeroDateTimeBehavior=convertToNull&useSSL=false&allowMultiQueries=true&serverTimezone=Asia/Shanghai&allowPublicKeyRetrieval=true
+    username: root
+    password: SA57Lj5vRL5tRe3
+  redis:
+    host: 172.18.255.8
+    port: 6379
+    password: 123456
+    database: 0

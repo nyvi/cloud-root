@@ -1,0 +1,33 @@
+server:
+  port: 9000
+# gateway
+spring:
+  application:
+    name: api-gateway
+  main:
+    allow-bean-definition-overriding: true
+  cloud:
+    nacos:
+      ## 注册中心配置
+      discovery:
+        # nacos的服务地址，nacos-server中IP地址:端口号
+        server-addr: 172.18.255.67:8848
+    gateway:
+      discovery:
+        locator:
+          enabled: true
+      routes:
+        - id: upms-server
+          uri: lb://upms-server
+          predicates:
+            - Path=/upms/**
+          filters:
+            - StripPrefix=1
+        - id: auth-server
+          uri: lb://auth-server
+          predicates:
+            - Path=/auth/**
+          filters:
+            - StripPrefix=1
+            - SwaggerHeaderFilter
+
