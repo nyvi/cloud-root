@@ -6,8 +6,8 @@ import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.ModelAndView;
 
 /**
- * @author : czk
- * @date 2018-07-08
+ * @author : huweihua
+ * @date 2023-07-10
  */
 @RestController
 @RequestMapping("/authentication")

@@ -20,8 +20,8 @@ import javax.validation.constraints.NotNull;
 import java.nio.charset.StandardCharsets;
 
 /**
- * @author : czk
- * @date 2018-07-28
+ * @author : huweihua
+ * @date 2023-07-28
  */
 @Component
 public class AccessFilter implements GlobalFilter {

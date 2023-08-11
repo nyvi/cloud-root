@@ -19,8 +19,8 @@ import java.util.Objects;
 /**
  * 重写授权失败(OAuth2AccessDeniedHandler)
  *
- * @author : czk
- * @date 2018-09-06
+ * @author : huweihua
+ * @date 2023-07-06
  */
 @Slf4j
 @Component

@@ -5,8 +5,8 @@ import java.io.Serializable;
 /**
  * 统一请求参数内容
  *
- * @author : czk
- * @date 2018-09-25
+ * @author : huweihua
+ * @date 2023-07-25
  */
 public class BaseRequest implements Serializable {
 

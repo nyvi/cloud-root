@@ -10,7 +10,7 @@
     <modelVersion>4.0.0</modelVersion>
 
     <artifactId>cloud-common-core</artifactId>
-    <version>${cloud.version}</version>
+    <version>1.0-SNAPSHOT</version>
 
     <name>cloud-common-core</name>
     <description>cloud 公共工具类核心模块</description>
@@ -85,11 +85,6 @@
             <artifactId>lombok</artifactId>
         </dependency>
 
-        <!--配置文件处理器-->
-        <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-configuration-processor</artifactId>
-        </dependency>
 
         <!-- Test -->
         <dependency>

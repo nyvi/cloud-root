@@ -6,7 +6,7 @@
 
     <groupId>com.github</groupId>
     <artifactId>cloud-root</artifactId>
-    <version>${cloud.version}</version>
+    <version>1.0-SNAPSHOT</version>
 
     <packaging>pom</packaging>
 
@@ -17,18 +17,20 @@
         <groupId>org.springframework.boot</groupId>
         <artifactId>spring-boot-starter-parent</artifactId>
         <version>2.1.1.RELEASE</version>
+        <relativePath/>
     </parent>
 
     <properties>
         <java.version>1.8</java.version>
+        <maven-compiler-plugin.version>3.8.1</maven-compiler-plugin.version>
         <guava.version>27.0-jre</guava.version>
         <druid.version>1.1.10</druid.version>
         <swagger.version>2.9.2</swagger.version>
-        <cloud.version>1.0-SNAPSHOT</cloud.version>
         <fastjson.version>1.2.47</fastjson.version>
         <mybatis-plus.version>3.0.6</mybatis-plus.version>
         <spring-boot.version>2.1.1.RELEASE</spring-boot.version>
         <spring-cloud.version>Greenwich.M3</spring-cloud.version>
+        <spring-cloud-alibaba.version>2.1.2.RELEASE</spring-cloud-alibaba.version>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
     </properties>
@@ -44,23 +46,31 @@
                 <type>pom</type>
                 <scope>import</scope>
             </dependency>
+            <!-- spring cloud alibaba-->
+            <dependency>
+                <groupId>com.alibaba.cloud</groupId>
+                <artifactId>spring-cloud-alibaba-dependencies</artifactId>
+                <version>${spring-cloud-alibaba.version}</version>
+                <type>pom</type>
+                <scope>import</scope>
+            </dependency>
 
             <dependency>
                 <groupId>com.github</groupId>
                 <artifactId>cloud-common-core</artifactId>
-                <version>${cloud.version}</version>
+                <version>1.0-SNAPSHOT</version>
             </dependency>
 
             <dependency>
                 <groupId>com.github</groupId>
                 <artifactId>cloud-common-security</artifactId>
-                <version>${cloud.version}</version>
+                <version>1.0-SNAPSHOT</version>
             </dependency>
 
             <dependency>
                 <groupId>com.github</groupId>
                 <artifactId>cloud-common-mybatis</artifactId>
-                <version>${cloud.version}</version>
+                <version>1.0-SNAPSHOT</version>
             </dependency>
 
             <!-- guava -->
@@ -121,6 +131,7 @@
         </pluginManagement>
     </build>
 
+
     <!-- 使用aliyun镜像 -->
     <repositories>
         <repository>
@@ -140,9 +151,7 @@
 
     <modules>
         <module>cloud-common</module>
-        <module>cloud-eureka</module>
         <module>cloud-modules</module>
-        <module>cloud-config</module>
         <module>cloud-auth</module>
         <module>cloud-gateway</module>
     </modules>

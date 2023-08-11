@@ -3,8 +3,8 @@ package com.github.cloud.common.swagger.config;
 import lombok.Data;
 
 /**
- * @author : czk
- * @date 2018-09-22
+ * @author : huweihua
+ * @date 2023-07-22
  */
 @Data
 public class Contact {

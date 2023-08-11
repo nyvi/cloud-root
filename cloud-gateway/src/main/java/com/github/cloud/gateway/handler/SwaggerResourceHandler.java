@@ -14,8 +14,8 @@ import springfox.documentation.swagger.web.SwaggerResourcesProvider;
 import javax.annotation.Nonnull;
 
 /**
- * @author : czk
- * @date 2018-09-21
+ * @author : huweihua
+ * @date 2023-07-21
  */
 @Component
 public class SwaggerResourceHandler implements HandlerFunction<ServerResponse> {

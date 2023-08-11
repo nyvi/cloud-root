@@ -17,7 +17,6 @@
 
     <modules>
         <module>upms-service</module>
-        <module>daemon-service</module>
     </modules>
 
 </project>

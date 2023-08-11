@@ -10,8 +10,8 @@ import java.util.Objects;
 /**
  * beanMap 互转工具类
  *
- * @author : czk
- * @date 2018-07-02
+ * @author : huweihua
+ * @date 2023-07-02
  */
 public final class BeanMapUtils {
 

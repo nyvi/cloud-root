@@ -2,11 +2,13 @@ package com.github.cloud.gateway;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.cloud.client.discovery.EnableDiscoveryClient;
 
 /**
- * @author : czk
- * @date 2018-07-21
+ * @author : huweihua
+ * @date 2023-07-21
  */
+@EnableDiscoveryClient
 @SpringBootApplication
 public class GatewayApplication {
 

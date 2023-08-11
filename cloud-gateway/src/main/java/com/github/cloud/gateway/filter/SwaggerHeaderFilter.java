@@ -9,8 +9,8 @@ import org.springframework.util.StringUtils;
 import org.springframework.web.server.ServerWebExchange;
 
 /**
- * @author : czk
- * @date 2018-09-21
+ * @author : huweihua
+ * @date 2023-07-21
  */
 @Component
 public class SwaggerHeaderFilter extends AbstractGatewayFilterFactory {

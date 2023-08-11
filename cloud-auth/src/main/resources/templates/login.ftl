@@ -12,14 +12,14 @@
 </head>
 <body>
 <div class="container form-margin-top">
-    <form class="form-login" action="/authentication/login" method="post">
+    <form class="form-login" action="/auth/authentication/login" method="post">
         <h2 class="form-login-heading" align="center">统一认证系统</h2>
         <div class="form-group">
             <input name="username" class="form-control form-margin-top" placeholder="账号" autocomplete="off" required
                    autofocus>
         </div>
         <div class="form-group">
-            <input type="password" name="password" class="form-control" placeholder="密码" required>
+            <input type="password" name="pwd" class="form-control" placeholder="密码" required>
         </div>
         <button class="btn btn-lg btn-primary btn-block" type="submit">登 录</button>
     </form>

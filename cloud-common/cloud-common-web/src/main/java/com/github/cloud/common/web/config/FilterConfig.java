@@ -10,8 +10,8 @@ import javax.servlet.Filter;
 /**
  * 拦截器配置
  *
- * @author : czk
- * @date 2018-10-07
+ * @author : huweihua
+ * @date 2023-07-07
  */
 @Configuration
 public class FilterConfig {

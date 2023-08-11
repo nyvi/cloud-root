@@ -12,8 +12,8 @@ import java.util.concurrent.ConcurrentHashMap;
 /**
  * Bean 工具类
  *
- * @author : czk
- * @date 2018-09-09
+ * @author : huweihua
+ * @date 2023-07-08
  */
 public class BeanUtils {
 

@@ -5,8 +5,8 @@ import java.util.concurrent.TimeUnit;
 /**
  * 缓存接口
  *
- * @author : czk
- * @date 2018-10-04
+ * @author : huweihua
+ * @date 2023-07-04
  */
 public interface ICache {
 

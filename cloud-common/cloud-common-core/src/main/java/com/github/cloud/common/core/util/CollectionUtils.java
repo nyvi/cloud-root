@@ -8,8 +8,8 @@ import java.util.Map;
 /**
  * 集合工具类, 继承org.springframework.util.CollectionUtils
  *
- * @author : czk
- * @date 2018-06-28
+ * @author : huweihua
+ * @date 2023-06-28
  */
 public final class CollectionUtils extends org.springframework.util.CollectionUtils {
 

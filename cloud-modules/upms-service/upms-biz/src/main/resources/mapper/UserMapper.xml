@@ -1,14 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.github.cloud.upms.biz.mapper.UserMapper">
-
     <!-- 查询用户角色 -->
     <select id="listUserRole" resultType="com.github.cloud.upms.biz.domain.entity.SysRoleDO">
         SELECT a.id, a.role_name roleName, a.role_code roleCode
         FROM sys_role a
                  INNER JOIN sys_user_role b ON a.id = b.role_id
-        WHERE b.user_id = #{userId, jdbcType = BIGINT}
-          AND a.active = 1
+        WHERE b.user_id = #{userId}
+          AND a.active = 0
     </select>
 
     <!-- 查询用户权限 -->
@@ -17,26 +16,26 @@
         FROM sys_menu a
                  INNER JOIN sys_role_menu b ON a.id = b.menu_id
                  INNER JOIN sys_user_role c ON b.role_id = c.role_id
-        WHERE c.user_id = #{userId, jdbcType = BIGINT}
+        WHERE c.user_id = #{userId}
           AND a.permissions IS NOT NULL
           AND a.permissions != ''
           AND c.user_id = 1
-          AND a.active = 1
+          AND a.active = 0
     </select>
 
     <!-- 分页查询 -->
     <select id="listPage" resultType="com.github.cloud.upms.biz.domain.vo.UserVO">
         SELECT a.id, a.account, a.user_name, a.phone, a.version_no
         FROM sys_user a
-        WHERE a.active = 1
+        WHERE a.active = 0
         <if test="pm.account != null and pm.account != ''">
-            AND a.account LIKE CONCAT(#{pm.account, jdbcType = VARCHAR}, '%')
+            AND a.account LIKE CONCAT(#{pm.account, '%')
         </if>
         <if test="pm.phone != null and pm.phone != ''">
-            AND a.phone = #{pm.phone, jdbcType = VARCHAR}
+            AND a.phone = #{pm.phone}
         </if>
         <if test="pm.userName != null and pm.userName != ''">
-            AND a.user_name = #{pm.userName, jdbcType = VARCHAR}
+            AND a.user_name = #{pm.userName}
         </if>
     </select>
 

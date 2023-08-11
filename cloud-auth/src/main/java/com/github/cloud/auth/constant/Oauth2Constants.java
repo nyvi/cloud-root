@@ -3,8 +3,8 @@ package com.github.cloud.auth.constant;
 /**
  * oauth2 常量
  *
- * @author : czk
- * @date 2018-09-07
+ * @author : huweihua
+ * @date 2023-07-07
  */
 public interface Oauth2Constants {
 

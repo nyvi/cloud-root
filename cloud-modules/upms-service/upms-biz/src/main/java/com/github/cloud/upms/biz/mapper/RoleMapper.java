@@ -11,8 +11,8 @@ import org.apache.ibatis.annotations.Param;
 /**
  * 角色Mapper
  *
- * @author : czk
- * @date 2018-09-22
+ * @author : huweihua
+ * @date 2023-07-22
  */
 public interface RoleMapper extends BaseMapper<SysRoleDO> {
 

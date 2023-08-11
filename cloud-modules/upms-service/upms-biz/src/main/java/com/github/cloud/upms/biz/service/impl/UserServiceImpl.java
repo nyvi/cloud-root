@@ -27,8 +27,8 @@ import java.util.Objects;
 import java.util.stream.Collectors;
 
 /**
- * @author : czk
- * @date 2018-09-06 15:47
+ * @author : huweihua
+ * @date 2023-07-06 15:47
  */
 @Service
 @AllArgsConstructor
@@ -37,7 +37,6 @@ public class UserServiceImpl extends BaseServiceImpl<UserMapper, SysUserDO> impl
     private final UserMapper userMapper;
 
     @Override
-    @Cacheable(value = "user")
     public UserDTO queryUserByAccount(String account) {
         SysUserDO sysUserDO = userMapper.selectOne(new QueryWrapper<SysUserDO>().lambda().eq(SysUserDO::getAccount, account));
 

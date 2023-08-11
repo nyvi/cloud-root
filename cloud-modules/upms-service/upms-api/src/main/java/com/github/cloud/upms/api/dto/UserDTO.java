@@ -8,8 +8,8 @@ import java.util.List;
 /**
  * 用户DTO
  *
- * @author : czk
- * @date 2018-09-06
+ * @author : huweihua
+ * @date 2023-07-06
  */
 @Data
 public class UserDTO implements Serializable {

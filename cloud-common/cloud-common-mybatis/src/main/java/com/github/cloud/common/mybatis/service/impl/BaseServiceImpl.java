@@ -22,8 +22,8 @@ import java.util.List;
 import java.util.Optional;
 
 /**
- * @author : czk
- * @date 2018-09-27 16:18
+ * @author : huweihua
+ * @date 2023-07-27 16:18
  */
 @SuppressWarnings({"unchecked", "SpringJavaAutowiredMembersInspection"})
 public class BaseServiceImpl<M extends BaseMapper<T>, T extends Key> implements BaseService<T> {

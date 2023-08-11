@@ -9,8 +9,8 @@ import lombok.EqualsAndHashCode;
 /**
  * 用户表
  *
- * @author : czk
- * @date 2018-07-03
+ * @author : huweihua
+ * @date 2023-07-03
  */
 @Data
 @TableName("sys_user")

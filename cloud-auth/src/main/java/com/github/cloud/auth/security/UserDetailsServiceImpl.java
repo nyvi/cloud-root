@@ -23,8 +23,8 @@ import java.util.Set;
 /**
  * 用户信息查询服务
  *
- * @author : czk
- * @date 2018-07-09 16:25
+ * @author : huweihua
+ * @date 2023-07-08 16:25
  */
 @Service
 @AllArgsConstructor
@@ -52,7 +52,7 @@ public class UserDetailsServiceImpl implements UserDetailsService {
 
         List<GrantedAuthority> authorityList = AuthorityUtils.createAuthorityList(authSet.toArray(new String[0]));
 
-        return new User(userInfo.getAccount(), SecurityConstants.BCRYPT + userInfo.getPwd(), authorityList);
+        return new User(userInfo.getAccount(), userInfo.getPwd(), authorityList);
     }
 
 
