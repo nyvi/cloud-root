@@ -23,8 +23,8 @@ import java.time.format.DateTimeFormatter;
 /**
  * Jack 序列化配置
  *
- * @author : czk
- * @date 2018-09-06
+ * @author : huweihua
+ * @date 2023-07-06
  */
 @Configuration
 public class JacksonConfig {

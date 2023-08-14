@@ -10,8 +10,8 @@ import java.io.IOException;
 /**
  * json 序列化反转义
  *
- * @author : czk
- * @date 2018-11-30
+ * @author : huweihua
+ * @date 2023-08-30
  */
 public class StringSerializer extends JsonSerializer<String> {
 

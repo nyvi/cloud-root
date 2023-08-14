@@ -1,0 +1,4 @@
+org.springframework.boot.autoconfigure.EnableAutoConfiguration=\
+  com.github.cloud.common.security.component.AccessDeniedHandler,\
+  com.github.cloud.common.security.component.PermissionService,\
+  com.github.cloud.common.security.component.ResourceAuthExceptionEntryPoint

@@ -10,8 +10,8 @@ import java.time.LocalDateTime;
 /**
  * BaseDO 定义数据库公共字段
  *
- * @author : czk
- * @date 2018-07-02
+ * @author : huweihua
+ * @date 2023-07-02
  */
 @Data
 @EqualsAndHashCode(callSuper = true)
@@ -40,7 +40,7 @@ public class BaseDO extends Key {
     private LocalDateTime gmtModify;
 
     /**
-     * 是否有效 0-无效 1-有效
+     * 是否有效 0-有效 1-无效
      */
     @TableLogic
     private Integer active;

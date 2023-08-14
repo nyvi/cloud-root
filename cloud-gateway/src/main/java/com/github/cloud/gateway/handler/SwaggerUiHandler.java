@@ -16,8 +16,8 @@ import javax.annotation.Nonnull;
 import java.util.Optional;
 
 /**
- * @author : czk
- * @date 2018-09-21
+ * @author : huweihua
+ * @date 2023-07-21
  */
 @Component
 public class SwaggerUiHandler implements HandlerFunction<ServerResponse> {

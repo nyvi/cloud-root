@@ -18,8 +18,8 @@ import org.springframework.security.oauth2.provider.token.store.redis.RedisToken
 import javax.sql.DataSource;
 
 /**
- * @author : czk
- * @date 2018-07-07 15:20
+ * @author : huweihua
+ * @date 2023-07-07 15:20
  */
 
 @Configuration

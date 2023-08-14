@@ -11,8 +11,8 @@ import java.io.IOException;
 /**
  * String 全局去空格 && 防止xss
  *
- * @author : czk
- * @date 2018-10-08
+ * @author : huweihua
+ * @date 2023-07-08
  */
 public class StringJsonDeserializer extends JsonDeserializer<String> {
 

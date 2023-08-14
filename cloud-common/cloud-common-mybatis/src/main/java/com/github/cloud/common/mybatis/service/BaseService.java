@@ -11,8 +11,8 @@ import java.util.List;
 import java.util.Optional;
 
 /**
- * @author : czk
- * @date 2018-09-27 16:14
+ * @author : huweihua
+ * @date 2023-07-27 16:14
  */
 public interface BaseService<T extends Key> {
 

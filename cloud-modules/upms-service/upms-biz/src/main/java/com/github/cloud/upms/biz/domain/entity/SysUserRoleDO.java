@@ -5,8 +5,8 @@ import lombok.Data;
 /**
  * 用户角色
  *
- * @author : czk
- * @date 2018-08-08
+ * @author : huweihua
+ * @date 2023-07-08
  */
 @Data
 public class SysUserRoleDO {

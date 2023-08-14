@@ -9,8 +9,8 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 
 /**
- * @author : czk
- * @date 2018-09-06
+ * @author : huweihua
+ * @date 2023-07-06
  */
 @FeignClient(value = ServiceNameConstant.UPMS_SERVICE, fallback = RemoteUserServiceFallbackImpl.class)
 public interface RemoteUserService {

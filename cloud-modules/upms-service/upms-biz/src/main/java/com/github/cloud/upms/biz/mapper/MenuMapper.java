@@ -6,8 +6,8 @@ import com.github.cloud.upms.biz.domain.entity.SysMenuDO;
 /**
  * 菜单 Mapper
  *
- * @author : czk
- * @date 2018-09-22
+ * @author : huweihua
+ * @date 2023-07-22
  */
 public interface MenuMapper extends BaseMapper<SysMenuDO> {
 

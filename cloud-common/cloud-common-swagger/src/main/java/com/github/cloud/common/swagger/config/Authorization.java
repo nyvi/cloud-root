@@ -6,8 +6,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * @author : czk
- * @date 2018-09-22
+ * @author : huweihua
+ * @date 2023-07-22
  */
 @Data
 public class Authorization {

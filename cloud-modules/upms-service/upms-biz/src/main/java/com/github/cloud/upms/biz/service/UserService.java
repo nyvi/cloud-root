@@ -11,8 +11,8 @@ import com.github.cloud.upms.biz.domain.request.UserQueryRequest;
 import com.github.cloud.upms.biz.domain.vo.UserVO;
 
 /**
- * @author : czk
- * @date 2018-09-06 15:46
+ * @author : huweihua
+ * @date 2023-07-06 15:46
  */
 public interface UserService extends BaseService<SysUserDO> {
 

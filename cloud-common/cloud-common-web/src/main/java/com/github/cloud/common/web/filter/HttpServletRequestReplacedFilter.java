@@ -15,8 +15,8 @@ import java.io.IOException;
 /**
  * 解决 request.getInputStream 只读取一次问题
  *
- * @author : czk
- * @date 2018-10-07
+ * @author : huweihua
+ * @date 2023-07-07
  */
 public class HttpServletRequestReplacedFilter extends OncePerRequestFilter {
 

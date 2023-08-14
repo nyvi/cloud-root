@@ -3,8 +3,8 @@ package com.github.cloud.common.core.constant.enums;
 /**
  * 服务状态枚举
  *
- * @author : czk
- * @date 2018-07-11
+ * @author : huweihua
+ * @date 2023-07-11
  */
 public enum ResultCode {
     /**

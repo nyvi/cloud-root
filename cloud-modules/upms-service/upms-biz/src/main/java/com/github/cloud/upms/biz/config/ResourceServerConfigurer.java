@@ -12,8 +12,8 @@ import org.springframework.security.oauth2.config.annotation.web.configurers.Res
 
 
 /**
- * @author : czk
- * @date 2018-09-06
+ * @author : huweihua
+ * @date 2023-07-06
  */
 @Configuration
 @AllArgsConstructor

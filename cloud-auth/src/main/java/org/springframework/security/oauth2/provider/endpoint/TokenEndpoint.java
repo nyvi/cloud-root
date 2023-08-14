@@ -41,8 +41,8 @@ import java.util.Set;
 /**
  * 重写spring获取TokenEndpoint，自定义返回格式与业务系统的格式保持一致
  *
- * @author : czk
- * @date 2018-07-12
+ * @author : huweihua
+ * @date 2023-07-12
  */
 @FrameworkEndpoint
 public class TokenEndpoint extends AbstractEndpoint {

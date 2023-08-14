@@ -12,8 +12,8 @@ import java.io.Serializable;
 /**
  * API响应结果
  *
- * @author : czk
- * @date 2018-07-11
+ * @author : huweihua
+ * @date 2023-07-11
  */
 @Data
 @NoArgsConstructor

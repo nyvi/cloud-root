@@ -11,8 +11,8 @@ import java.util.concurrent.TimeUnit;
 /**
  * Redis 实现
  *
- * @author : czk
- * @date 2018-09-30
+ * @author : huweihua
+ * @date 2023-07-30
  */
 @Component
 public class RedisImpl implements ICache {

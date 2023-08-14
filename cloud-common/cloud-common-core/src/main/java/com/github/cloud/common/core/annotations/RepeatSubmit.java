@@ -8,8 +8,8 @@ import java.lang.annotation.Target;
 /**
  * 防重复提交
  *
- * @author : czk
- * @date 2018-10-04
+ * @author : huweihua
+ * @date 2023-07-04
  */
 @Target({ElementType.METHOD})
 @Retention(RetentionPolicy.RUNTIME)

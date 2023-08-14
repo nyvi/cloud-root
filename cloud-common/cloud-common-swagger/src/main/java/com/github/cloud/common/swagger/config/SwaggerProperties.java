@@ -7,8 +7,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * @author : czk
- * @date 2018-09-21
+ * @author : huweihua
+ * @date 2023-07-21
  */
 @Data
 @ConfigurationProperties("swagger")

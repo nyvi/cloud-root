@@ -8,8 +8,8 @@ import java.util.List;
 /**
  * 分页参数
  *
- * @author : czk
- * @date 2018-09-29 17:29
+ * @author : huweihua
+ * @date 2023-07-11 17:29
  */
 @Data
 public class PageDTO<T> implements Serializable {

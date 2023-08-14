@@ -19,8 +19,8 @@ import java.util.Set;
 /**
  * 统一验证服务请求参数
  *
- * @author : czk
- * @date 2018-10-11
+ * @author : huweihua
+ * @date 2023-07-11
  */
 @Slf4j
 public class ServiceHelper {

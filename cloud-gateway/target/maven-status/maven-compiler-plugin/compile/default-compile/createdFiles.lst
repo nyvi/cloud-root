@@ -1,0 +1,8 @@
+com\github\cloud\gateway\filter\AccessFilter.class
+com\github\cloud\gateway\handler\SwaggerResourceHandler.class
+com\github\cloud\gateway\GatewayApplication.class
+com\github\cloud\gateway\handler\SwaggerSecurityHandler.class
+com\github\cloud\gateway\filter\SwaggerHeaderFilter.class
+com\github\cloud\gateway\handler\SwaggerUiHandler.class
+com\github\cloud\gateway\config\RouterFunctionConfiguration.class
+com\github\cloud\gateway\config\SwaggerProvider.class

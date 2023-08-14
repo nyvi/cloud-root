@@ -8,8 +8,8 @@ import com.github.cloud.upms.biz.domain.request.RoleQueryRequest;
 import com.github.cloud.upms.biz.domain.vo.RoleVO;
 
 /**
- * @author : czk
- * @date 2018-09-06 15:46
+ * @author : huweihua
+ * @date 2023-07-06 15:46
  */
 public interface RoleService extends BaseService<SysRoleDO> {
 

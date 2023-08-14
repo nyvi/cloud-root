@@ -18,8 +18,8 @@ import java.util.Objects;
 /**
  * 客户端异常处理
  *
- * @author : czk
- * @date 2018-09-06
+ * @author : huweihua
+ * @date 2023-07-06
  */
 @Component
 public class ResourceAuthExceptionEntryPoint implements AuthenticationEntryPoint {

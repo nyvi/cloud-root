@@ -1,0 +1,4 @@
+com\github\cloud\common\security\component\ResourceAuthExceptionEntryPoint.class
+com\github\cloud\common\security\util\SecurityUtils.class
+com\github\cloud\common\security\component\PermissionService.class
+com\github\cloud\common\security\component\AccessDeniedHandler.class

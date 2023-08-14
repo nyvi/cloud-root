@@ -3,8 +3,8 @@ package com.github.cloud.common.core.constant;
 /**
  * 系统常量
  *
- * @author : czk
- * @date 2018-07-02
+ * @author : huweihua
+ * @date 2023-07-02
  */
 public interface SysConstant {
 

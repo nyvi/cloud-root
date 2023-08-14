@@ -29,8 +29,8 @@ import java.util.stream.Collectors;
 /**
  * swagger 配置
  *
- * @author : czk
- * @date 2018-09-21
+ * @author : huweihua
+ * @date 2023-07-21
  */
 @Configuration
 @EnableSwagger2

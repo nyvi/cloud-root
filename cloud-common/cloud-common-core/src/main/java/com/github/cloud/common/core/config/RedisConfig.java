@@ -16,8 +16,8 @@ import java.util.Arrays;
 /**
  * redis 配置
  *
- * @author : czk
- * @date 2018-12-01
+ * @author : huweihua
+ * @date 2023-12-01
  */
 @Configuration
 @EnableCaching

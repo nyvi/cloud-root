@@ -3,8 +3,8 @@ package com.github.cloud.common.core.exception;
 /**
  * 自定义服务异常
  *
- * @author : czk
- * @date 2018-07-18
+ * @author : huweihua
+ * @date 2023-07-18
  */
 public class ServiceException extends RuntimeException {
 

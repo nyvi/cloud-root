@@ -3,8 +3,8 @@ package com.github.cloud.common.security.component;
 import org.springframework.stereotype.Component;
 
 /**
- * @author : czk
- * @date 2018-09-07
+ * @author : huweihua
+ * @date 2023-07-07
  */
 @Component("pms")
 public class PermissionService {

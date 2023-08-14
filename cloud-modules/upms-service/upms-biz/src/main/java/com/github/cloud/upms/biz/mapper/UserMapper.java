@@ -14,8 +14,8 @@ import java.util.List;
 /**
  * 用户 Mapper
  *
- * @author : czk
- * @date 2018-09-19
+ * @author : huweihua
+ * @date 2023-07-19
  */
 public interface UserMapper extends BaseMapper<SysUserDO> {
 

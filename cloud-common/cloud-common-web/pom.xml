@@ -25,6 +25,7 @@
         <dependency>
             <groupId>com.github</groupId>
             <artifactId>cloud-common-security</artifactId>
+            <version>1.0-SNAPSHOT</version>
         </dependency>
 
         <dependency>
@@ -36,6 +37,7 @@
         <dependency>
             <groupId>com.github</groupId>
             <artifactId>cloud-common-mybatis</artifactId>
+            <version>1.0-SNAPSHOT</version>
         </dependency>
 
     </dependencies>

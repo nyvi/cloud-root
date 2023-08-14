@@ -3,8 +3,8 @@ package com.github.cloud.auth.constant;
 /**
  * Security 常量
  *
- * @author : czk
- * @date 2018-09-23
+ * @author : huweihua
+ * @date 2023-07-23
  */
 public interface SecurityConstants {
 

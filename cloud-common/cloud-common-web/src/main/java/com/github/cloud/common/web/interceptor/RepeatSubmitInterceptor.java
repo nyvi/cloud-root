@@ -24,8 +24,8 @@ import java.util.concurrent.TimeUnit;
 /**
  * 防重复提交拦截器
  *
- * @author : czk
- * @date 2018-09-30
+ * @author : huweihua
+ * @date 2023-07-30
  */
 @Slf4j
 @Component

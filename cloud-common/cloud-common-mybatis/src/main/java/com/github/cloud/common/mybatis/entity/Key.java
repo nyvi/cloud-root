@@ -7,8 +7,8 @@ import java.io.Serializable;
 /**
  * 数据库主键
  *
- * @author : czk
- * @date 2018-09-27
+ * @author : huweihua
+ * @date 2023-07-27
  */
 @Data
 public class Key implements Serializable {
